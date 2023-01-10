@@ -38,6 +38,7 @@ Route::put('/updateEvent/{event}',    [CalendarController::class, 'updateEvent']
 Route::get('/edit/{event}',           [CalendarController::class, 'edit'])->name('event.edit')->middleware('auth');
 
 Route::delete('/deleteEvent/{id}',    [CalendarController::class, 'deleteEvent'])->name('calender.deleteEvent')->middleware('auth');
+Route::post('/store',                 [CalendarController::class, 'store'])->name('calender.store')->middleware('auth');
 
 Route::put('/updateUser/{user}',      [UserController::class, 'updateUser'])->name('user.update')->middleware('auth');
 Route::get('/edit/{user}',            [UserController::class, 'edit'])      ->name('user.edit')->middleware('auth');

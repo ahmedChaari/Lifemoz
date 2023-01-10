@@ -38,9 +38,19 @@ class CalendarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+        $user  = Auth::user()->id;
+        Event::create([
+                'name'        => $request->name,
+                'start'       => $request->start,
+                'end'         => $request->end,
+                'user_id'     => $user,
+                'description' => $request->description,
+                ]);
+
+        return redirect(route('calender.list'));
+
     }
 
     /**
@@ -95,4 +105,5 @@ class CalendarController extends Controller
         Event::find($id)->delete();
         return redirect()->back();
     }
+
 }
