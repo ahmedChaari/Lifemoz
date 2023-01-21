@@ -33,15 +33,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
  //calendar
 Route::get('/list',                   [CalendarController::class, 'index'])         ->name('calender.list')->middleware('auth');
-Route::get('/create',                 [CalendarController::class, 'create'])        ->name('calender.create')->middleware('auth');
 Route::put('/updateEvent/{event}',    [CalendarController::class, 'updateEvent'])->name('event.update')->middleware('auth');
 Route::get('/edit/{event}',           [CalendarController::class, 'edit'])->name('event.edit')->middleware('auth');
 
 Route::delete('/deleteEvent/{id}',    [CalendarController::class, 'deleteEvent'])->name('calender.deleteEvent')->middleware('auth');
 Route::post('/store',                 [CalendarController::class, 'store'])->name('calender.store')->middleware('auth');
 
-Route::put('/updateUser/{user}',      [UserController::class, 'updateUser'])->name('user.update')->middleware('auth');
-Route::get('/edit/{user}',            [UserController::class, 'edit'])      ->name('user.edit')->middleware('auth');
+
+//users
+Route::put('/updateUser/{user}',      [UserController::class, 'updateUser']) ->name('user.update')->middleware('auth');
+Route::get('/edit/{user}',            [UserController::class, 'edit'])       ->name('user.edit')->middleware('auth');
+Route::get('/listUser',               [UserController::class, 'listUser'])   ->name('user.list')->middleware('auth');
+Route::post('/createUser',            [UserController::class, 'createUser']) ->name('user.create')->middleware('auth');
+Route::get('/create',                 [UserController::class, 'create'])        ->name('user.createView')->middleware('auth');
 
 
 Route::get('/editTest/{user}',            [UserController::class, 'editTest'])      ->name('user.editTest')->middleware('auth');

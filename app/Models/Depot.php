@@ -2,20 +2,19 @@
 
 namespace App\Models;
 
+use App\Traits\Uuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\Uuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Event extends Model
+class Depot extends Model
 {
     use Uuids ,HasFactory, SoftDeletes;
     protected $guarded = [];
 
-    public function user(): ?BelongsTo
+     public function products(): ?HasMany
     {
-        return $this->belongsTo(User::class);
+       return $this->hasMany(Product::class);
     }
-
 }

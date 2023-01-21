@@ -19,6 +19,8 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta name="author" content="LEFT4CODE">
          <!-- CSRF Token -->
          <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
          <title>{{ config('app.name', 'Calander') }}</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}"/>
@@ -53,7 +55,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                     </li>
                     <li>
-                        <a href="side-menu-light-calendar.html" href="{{ route('register') }}" class="menu">
+                        <a href="side-menu-light-calendar.html" href="" class="menu">
                             <div class="menu__icon"> <i data-lucide="calendar"></i> </div>
                             <div class="menu__title"> Calendar </div>
                         </a>
@@ -151,13 +153,22 @@ License: You must have a valid license purchased only from themeforest(the above
 
                     </li>
                     <li>
-                        <a href="{{ route('calender.list') }}" class="side-menu">
+                        <a href="" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
                             <div class="side-menu__title"> List Evénement </div>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('calender.create') }}" class="side-menu">
+                        <a href="{{ route('user.list') }}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
+                            <div class="side-menu__title"> List Users </div>
+
+
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
                             <div class="side-menu__title"> Calendar </div>
                         </a>

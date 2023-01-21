@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Traits\Uuids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -42,8 +43,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function events(): ?HasMany
+    public function products(): ?HasMany
     {
-       return $this->hasMany(Event::class);
+       return $this->hasMany(Product::class);
+    }
+
+    public function historics(): ?HasMany
+    {
+       return $this->hasMany(Historic::class);
+    }
+
+    public function role(): ?BelongsTo
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function service(): ?BelongsTo
+    {
+        return $this->belongsTo(Service::class);
     }
 }
