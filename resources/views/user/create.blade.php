@@ -13,8 +13,10 @@
                 </div>
                 <div id="form-validation" class="p-5">
                     <div class="preview">
-                        <form class="" action="{{route('user.create')}}"   method="POST" >
+                        <form class="" action="{{route('user.create')}}" enctype="multipart/form-data"
+                        method="POST" >
                             @csrf
+
                             <div class="input-form mt-3">
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row"> Name <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, at least 3 characters</span> </label>
                                 <input id="name" type="text" name="name"
@@ -61,7 +63,7 @@
                             <div class="input-form mt-3">
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Service <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, Service</span> </label>
-                                <select class="form-select mt-2 sm:mr-2" name="service" aria-label="Default select example">
+                                <select class="form-select mt-2 sm:mr-2" name="service_id" aria-label="Default select example">
                                         <option value="" selected disabled>--------</option>
                                     @foreach($services as $service)
                                         <option value="{{ $service->id }}"
@@ -79,7 +81,7 @@
                             <div class="input-form mt-3">
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Role <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, Role</span> </label>
-                                <select class="form-select mt-2 sm:mr-2" name="role" aria-label="Default select example">
+                                <select class="form-select mt-2 sm:mr-2" name="role_id" aria-label="Default select example">
                                         <option value="" selected disabled>--------</option>
                                     @foreach($roles as $role)
                                         <option value="{{ $role->id }}"

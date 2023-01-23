@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\User\createUserRequest;
+use App\Http\Requests\CreateUserRequest;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\Role;
 use App\Models\Service;
@@ -54,20 +55,21 @@ class UserController extends Controller
         ->with('roles',$roles);
     }
 
-    public function createUser(createUserRequest $request){
+    public function createUser(CreateUserRequest $request){
 
-        return  User::create([
-            'name'       => $request['name'],
-            'tel'        => $request['tel'],
-            'fonction'   => $request['fonction'],
-            'service_id' => $request['service_id'],
-            'role_id'    => $request['role_id'],
-            'email'      => $request['email'],
-            'password'   => Hash::make($request['password']),
+
+
+       User::create([
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'tel'        => $request->tel,
+            'fonction'   => $request->fonction,
+            'service_id' => $request->service_id,
+            'role_id'    => $request->role_id,
+            'password'   => Hash::make($request->password),
         ]);
 
-
-        return  view('user.list');
+        return  redirect(route('user.list'));
     }
 
 
