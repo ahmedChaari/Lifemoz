@@ -16,7 +16,7 @@ class CreateUnitiesTable extends Migration
         Schema::create('unities', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->text('description')->nullable();
+            $table->string('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

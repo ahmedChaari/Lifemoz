@@ -21,6 +21,8 @@ class CreateProductsTable extends Migration
             $table->foreignUuid('depot_id');
             $table->foreignUuid('user_id');
             $table->foreignUuid('unity_id');
+            $table->integer('quantite');
+            $table->integer('stock_min');
             $table->softDeletes();
             $table->timestamps();
         });

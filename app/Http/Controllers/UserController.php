@@ -15,18 +15,19 @@ class UserController extends Controller
 {
     public function listUser(Request $request)
     {
-        $services = Service::get();
-        $roles = Role::get();
         $users = User::paginate(10);
         return view('user.list' , compact('users'))
-                ->with('services',$services)
-                ->with('roles',$roles);
+               ;
     }
 
 
     public function edit(User $user)
     {
-        return view('user.update')->with('user',$user);
+        $services = Service::get();
+        $roles = Role::get();
+        return view('user.updateUser')->with('user',$user)
+        ->with('services', $services)
+        ->with('roles', $roles);
     }
 
 
@@ -56,9 +57,6 @@ class UserController extends Controller
     }
 
     public function createUser(CreateUserRequest $request){
-
-
-
        User::create([
             'name'       => $request->name,
             'email'      => $request->email,
@@ -70,6 +68,25 @@ class UserController extends Controller
         ]);
 
         return  redirect(route('user.list'));
+    }
+    // update user in the list
+    public function editUserList(User $user)
+    {
+        return view('user.updateUser')->with('user',$user);
+    }
+
+    public function updateUserList(UserUpdateRequest $request,User $user){
+        $user->update([
+            'name'       => $request->name,
+            'email'      => $request->email,
+            'tel'        => $request->tel,
+            'fonction'   => $request->fonction,
+            'service_id' => $request->service_id,
+            'role_id'    => $request->role_id,
+            'password'   => $request->password,
+            'password' => Hash::make($request['password']),
+            ]);
+        return redirect(route('user.list'));
     }
 
 

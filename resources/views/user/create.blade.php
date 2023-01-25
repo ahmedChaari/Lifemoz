@@ -63,7 +63,7 @@
                             <div class="input-form mt-3">
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Service <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, Service</span> </label>
-                                <select class="form-select mt-2 sm:mr-2" name="service_id" aria-label="Default select example">
+                                <select class="form-select mt-2 sm:mr-2" name="service" aria-label="Default select example">
                                         <option value="" selected disabled>--------</option>
                                     @foreach($services as $service)
                                         <option value="{{ $service->id }}"

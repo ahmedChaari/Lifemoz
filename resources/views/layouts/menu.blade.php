@@ -163,14 +163,12 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
                             <div class="side-menu__title"> List Users </div>
 
-
-
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="{{ route('product.list') }}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
-                            <div class="side-menu__title"> Calendar </div>
+                            <div class="side-menu__title"> Product </div>
                         </a>
                     </li>
 

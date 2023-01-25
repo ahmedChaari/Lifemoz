@@ -4,11 +4,11 @@
  <!-- BEGIN: Content -->
  <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        List of users
+        List of Products
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('user.createView')}}"  class="btn btn-primary shadow-md mr-2">Add New User</a>
+            <a href=""  class="btn btn-primary shadow-md mr-2">Add New Product</a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -40,41 +40,44 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">NOM PRENOM</th>
-                        <th class="text-center whitespace-nowrap">SERVICE / FONCTION</th>
-                        <th class="text-center whitespace-nowrap">TEL</th>
-                        <th class="text-center whitespace-nowrap">STATUS</th>
+                        <th class="whitespace-nowrap">NOM</th>
+                        <th class="text-center whitespace-nowrap">CATEGORY / UNITY</th>
+                        <th class="text-center whitespace-nowrap">CREATION DE</th>
+                        <th class="text-center whitespace-nowrap">DEPOT</th>
+                        <th class="text-center whitespace-nowrap">QUANTITE</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if($users->count() > 0 )
-                    @foreach($users as $user)
+                    @if($products->count() > 0 )
+                    @foreach($products as $product)
                     <tr class="intro-x">
                         <td class="w-40">
-                            <a href="" class="font-medium whitespace-nowrap">{{ $user->name }}</a>
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $user->email }}</div>
+                            <a href="" class="font-medium whitespace-nowrap">{{ $product->name }}</a>
                         </td>
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{ $user->service->name }}</a>
-                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $user->fonction }}</div>
+                            <a href="" class="font-medium whitespace-nowrap">{{ $product->category->name }}</a>
+                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->unity->name }}</div>
                         </td>
-                        <td class="text-center">{{ $user->tel }}</td>
                         <td class="w-40">
-                            @if ( $user->active == 1)
+                            <a href="" class="font-medium whitespace-nowrap">{{ $product->user->name }}</a>
+                        </td>
+                        <td class="text-center">{{ $product->depot->name }}</td>
+                        <td class="w-40">
+                            @if ( $product->quantite > $product->stock_min)
 
                             <div class="flex items-center justify-center text-success">
-                                <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview">
-                                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Active </a></div>
+
+                                {{ $product->quantite }} </a></div>
                             @else
                             <div class="flex items-center justify-center text-danger">
-                                <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview">
-                                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Inactive </a></div>
+
+                              {{ $product->quantite }} </a></div>
                             @endif
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href="{{ route('user.edit', $user->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
+                                <a class="flex items-center mr-3" href=""> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
                                 <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
@@ -85,7 +88,7 @@
                     @endif
                 </tbody>
             </table>
-            {{ $users->links() }}
+            {{ $products->links() }}
         </div>
         <!-- END: Data List -->
     </div>
