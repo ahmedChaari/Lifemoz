@@ -16,8 +16,8 @@ class CreateHistoricsTable extends Migration
         Schema::create('historics', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('name');
-            $table->foreignUuid('role_id');
-            $table->foreignUuid('product_id');
+            $table->integer('quantite')->nullable();
+            $table->foreignUuid('product_id')->nullable();
             $table->foreignUuid('user_id');
             $table->softDeletes();
             $table->timestamps();

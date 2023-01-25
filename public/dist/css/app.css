@@ -111,6 +111,18 @@ Add the correct font size in all browsers.
 small {
   font-size: 80%;
 }
+
+
+/*
+ahmed css
+*/
+
+.plus-btn-add{
+    height: 20px !important;
+    width: 12px !important;
+    margin: 0px 32px !important;
+}
+
 /*
 Prevent `sub` and `sup` elements from affecting the line height in all browsers.
 */
@@ -10201,6 +10213,7 @@ html body{
     transition-duration: 300ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 .search .search__input:focus{
     border-color: transparent;
 }

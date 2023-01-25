@@ -190,5 +190,6 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
         <script src="{{ asset('dist/js/app.js') }}"></script>
         <!-- END: JS Assets-->
+         <script src="dist/js/ckeditor-classic.js"></script>
     </body>
 </html>

@@ -8,7 +8,7 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href=""  class="btn btn-primary shadow-md mr-2">Add New Product</a>
+            <a href="{{ route('product.createView') }}"  class="btn btn-primary shadow-md mr-2">Add New Product</a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -40,9 +40,9 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">NOM</th>
+                        <th class="whitespace-nowrap">PRODUIT</th>
                         <th class="text-center whitespace-nowrap">CATEGORY / UNITY</th>
-                        <th class="text-center whitespace-nowrap">CREATION DE</th>
+                        <th class="text-center whitespace-nowrap">CREATION DE / ROLE</th>
                         <th class="text-center whitespace-nowrap">DEPOT</th>
                         <th class="text-center whitespace-nowrap">QUANTITE</th>
                         <th class="text-center whitespace-nowrap">ACTIONS</th>
@@ -61,6 +61,7 @@
                         </td>
                         <td class="w-40">
                             <a href="" class="font-medium whitespace-nowrap">{{ $product->user->name }}</a>
+                            <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->user->role->name }}</div>
                         </td>
                         <td class="text-center">{{ $product->depot->name }}</td>
                         <td class="w-40">
