@@ -48,12 +48,13 @@ class UserController extends Controller
         return redirect(route('calender.create'));
     }
 
-    public function create()
+    public function createView()
     {
         $services = Service::get();
         $roles = Role::get();
-        return view('user.create') ->with('services',$services)
-        ->with('roles',$roles);
+        return view('user.create')
+                ->with('services',$services)
+                ->with('roles',$roles);
     }
 
     public function createUser(CreateUserRequest $request){

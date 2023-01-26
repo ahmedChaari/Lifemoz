@@ -42,7 +42,7 @@ Route::put('/updateUser/{user}',      [UserController::class, 'updateUser']) ->n
 Route::get('/edit/{user}',            [UserController::class, 'edit'])       ->name('user.edit')->middleware('auth');
 Route::get('/listUser',               [UserController::class, 'listUser'])   ->name('user.list')->middleware('auth');
 Route::post('/createUser',            [UserController::class, 'createUser']) ->name('user.create')->middleware('auth');
-Route::get('/create',                 [UserController::class, 'create'])        ->name('user.createView')->middleware('auth');
+Route::get('/createView',             [UserController::class, 'createView'])        ->name('user.createViewUser')->middleware('auth');
 
 
 Route::get('/editTest/{user}',            [UserController::class, 'editTest'])      ->name('user.editTest')->middleware('auth');
