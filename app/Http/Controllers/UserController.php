@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateUserRequest;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\Historic;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -45,7 +47,7 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
             ]);
 
-        return redirect(route('calender.create'));
+        return redirect(route('home'));
     }
 
     public function createView()
@@ -77,6 +79,8 @@ class UserController extends Controller
     }
 
     public function updateUserList(UserUpdateRequest $request,User $user){
+        $name = 'Update user';
+        $userCreate  = Auth::user()->id;
         $user->update([
             'name'       => $request->name,
             'email'      => $request->email,
@@ -86,7 +90,15 @@ class UserController extends Controller
             'role_id'    => $request->role_id,
             'password'   => $request->password,
             'password' => Hash::make($request['password']),
+            'active' => $request->has('active'),
             ]);
+            Historic::create([
+                'name'        => $name,
+                'user_id'     => $userCreate,
+            ]);
+
+
+
         return redirect(route('user.list'));
     }
 

@@ -61,15 +61,11 @@
                         </td>
                         <td class="text-center">{{ $user->tel }}</td>
                         <td class="w-40">
-                            @if ( $user->active == 1)
+                            @if ($user->active == false)
 
-                            <div class="flex items-center justify-center text-success">
-                                <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview">
-                                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Active </a></div>
+                                <div class="flex items-center justify-center text-danger"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Inactive </div>
                             @else
-                            <div class="flex items-center justify-center text-danger">
-                                <a href="javascript:;" data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview">
-                                <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Inactive </a></div>
+                                <div class="flex items-center justify-center text-success"> <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Active </div>
                             @endif
                         </td>
                         <td class="table-report__action w-56">

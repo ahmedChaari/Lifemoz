@@ -3,21 +3,29 @@
 <div class="grid grid-cols-12 gap-6 mt-5">
     <div class="intro-y col-span-12 lg:col-span-12">
         <!-- BEGIN: Form Validation -->
+      <form class="" action="{{ route('user.updateUserList' , $user) }}" enctype="multipart/form-data" method="POST" >
+                            @csrf
+                            @method('PUT')
         <div class="intro-y box">
             <div class="flex flex-col sm:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
                 <h2 class="font-medium text-base mr-auto">
-                    Implementation
+                    Mettre à jour
                 </h2>
+                   <!--   checkbox-switch -->
+                   <div class="mt-3" style="float: right;"> <label>Activer Compte</label>
+                    <div class="mt-2">
+                        <div class="form-check form-switch"> <input id="checkbox-switch-7" class="form-check-input"
+                            type="checkbox"
+                            name="active" value="1" {{ $user->active == true ? 'checked' : ''}}>
+                        </div>
+                    </div>
+                </div>
+                <!--   end checkbox-switch -->
             </div>
             <div id="form-validation" class="p-5">
                 <div class="preview">
                     <!-- BEGIN: Validation Form -->
-                    <form class="" action="{{ route('user.updateUserList' , $user) }}"
 
-                        enctype="multipart/form-data"
-                        method="POST" >
-                            @csrf
-                            @method('PUT')
                         <div class="input-form">
                             <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row"> Name <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, at least 2 characters</span> </label>
                             <input id="validation-form-1"
@@ -109,15 +117,12 @@
                             @enderror
                         </div>
 
-                        <!--   conferm password -->
-                        <div class="input-form mt-3">
-                            <label for="validation-form-3" class="form-label w-full flex flex-col sm:flex-row"> Confirm Password
-                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, at least 6 characters</span> </label>
-                            <input id="password-confirm" type="password" class="intro-x login__input form-control py-3 px-4 block mt-4"
-                            placeholder="{{ __('Confirm Password') }}" name="password_confirmation" required autocomplete="new-password">
-                        </div>
+
+
+
                         <button type="submit" class="btn btn-primary mt-5">Register</button>
-                    </form>
+
+
                     <!-- END: Validation Form -->
                     <!-- BEGIN: Success Notification Content -->
                     <div id="success-notification-content" class="toastify-content hidden flex" >
@@ -145,7 +150,9 @@
                     </div>
                 </div>
             </div>
+
         </div>
+     </form>
         <!-- END: Form Validation -->
     </div>
 </div>

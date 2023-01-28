@@ -155,21 +155,57 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li>
                         <a href="" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
-                            <div class="side-menu__title"> List Evénement </div>
+                            <div class="side-menu__title"> Journal <br> des modifications </div>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('user.list') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
-                            <div class="side-menu__title"> List Users </div>
 
-                        </a>
-                    </li>
                     <li>
-                        <a href="{{ route('product.list') }}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="calendar"></i> </div>
-                            <div class="side-menu__title"> Product </div>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
+                            <div class="side-menu__title">
+                                User
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
                         </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('user.list') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> List users </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('user.createViewUser')}}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Create user</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <li>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                            <div class="side-menu__title">
+                                Product
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('product.list') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> List products </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('product.createView') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Create product</div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                 </ul>
@@ -186,9 +222,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         @yield('scripts')
         <!-- BEGIN: JS Assets-->
-        <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script>
-        <script src="{{ asset('dist/js/app.js') }}"></script>
+       <script src="{{ asset('dist/js/app.js') }}"></script>
         <!-- END: JS Assets-->
          <script src="dist/js/ckeditor-classic.js"></script>
     </body>
