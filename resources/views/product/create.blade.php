@@ -33,7 +33,11 @@
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Category
                                     <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">
-                                        <a href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white ml-2 tooltip" title="Ajouter un Produit"> <i data-lucide="plus" class="w-3 h-3"></i> </a>
+                                        <a href="javascript:;" class="intro-x w-8 h-8 flex items-center justify-center
+                                        rounded-full bg-primary text-white ml-2 tooltip"
+                                        data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview"
+                                        title="Ajouter un Category">
+                                        <i data-lucide="plus" class="w-3 h-3"></i> </a>
                                     </span> </label>
                                 <select class="form-select mt-2 sm:mr-2" name="category_id" aria-label="Default select example">
                                         <option value="" selected disabled>--------</option>
@@ -55,7 +59,11 @@
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Depot
                                      <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">
-                                        <a href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white ml-2 tooltip" title="Ajouter un Depot"> <i data-lucide="plus" class="w-3 h-3"></i> </a>
+                                        <a href="javascript:;" class="intro-x w-8 h-8 flex items-center justify-center
+                                        rounded-full bg-primary text-white ml-2 tooltip"
+                                        data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview-depot"
+
+                                        title="Ajouter un Depot"> <i data-lucide="plus" class="w-3 h-3"></i> </a>
                                     </span> </label>
                                 <select class="form-select mt-2 sm:mr-2" name="depot_id" aria-label="Default select example">
                                         <option value="" selected disabled>--------</option>
@@ -77,7 +85,11 @@
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Unity
                                     <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">
-                                        <a href="" class="intro-x w-8 h-8 flex items-center justify-center rounded-full bg-primary text-white ml-2 tooltip" title="Ajouter une Unite "> <i data-lucide="plus" class="w-3 h-3"></i> </a>
+                                        <a href="javascript:;" class="intro-x w-8 h-8 flex items-center justify-center
+                                        rounded-full bg-primary text-white ml-2 tooltip"
+                                        data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview-unity"
+
+                                        title="Ajouter une Unite "> <i data-lucide="plus" class="w-3 h-3"></i> </a>
                                         </span> </label>
                                 <select class="form-select mt-2 sm:mr-2" name="unity_id" aria-label="Default select example">
                                         <option value="" selected disabled>--------</option>
@@ -133,6 +145,89 @@
         </div>
 
     <!-- END: New Order Modal -->
+
+
+    <!-- BEGIN: Modal Content  category-->
+        <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- BEGIN: Modal Header -->
+                    <div class="modal-header">
+                        <h2 class="font-medium text-base mr-auto">Creation un Category</h2>
+                    </div> <!-- END: Modal Header -->
+                    <!-- BEGIN: Modal Body -->
+                    <form method="POST" action="{{route('category.create')}}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                            <div class="col-span-12 sm:col-span-12"> <label for="modal-form-1" class="form-label">Nom</label>
+                                <input name="name" id="modal-form-1" type="text" class="form-control" placeholder="Nom de Category">
+                                @error('name')
+                                <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
+                                    <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-span-12 sm:col-span-12"> <label for="modal-form-2" class="form-label">Description</label> <textarea name="description" id="modal-form-2" type="text" class="form-control" placeholder="description pour le produit"> </textarea></div>
+                        </div> <!-- END: Modal Body -->
+                        <!-- BEGIN: Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" data-tw-dismiss="modal" class="btn btn-danger w-20 mr-1">Cancel</button>
+                            <button type="submit" class="btn btn-outline-primary w-20">Create</button> </div> <!-- END: Modal Footer -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- END: Modal Content Category -->
+
+    <!-- BEGIN: Modal Content  depot-->
+        <div id="header-footer-modal-preview-depot" class="modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- BEGIN: Modal Header -->
+                    <div class="modal-header">
+                        <h2 class="font-medium text-base mr-auto">Creation un Depot</h2>
+                    </div> <!-- END: Modal Header -->
+                    <!-- BEGIN: Modal Body -->
+                    <form method="POST" action="{{route('depot.create')}}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                            <div class="col-span-12 sm:col-span-12"> <label for="modal-form-1" class="form-label">Nom</label>
+                                <input name="name" id="modal-form-1" type="text" class="form-control" placeholder="Nom de depot"> </div>
+                        </div> <!-- END: Modal Body -->
+                        <!-- BEGIN: Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" data-tw-dismiss="modal" class="btn btn-danger w-20 mr-1">Cancel</button>
+                            <button type="submit" class="btn btn-outline-primary w-20">Create</button> </div> <!-- END: Modal Footer -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- END: Modal Content depot -->
+
+    <!-- BEGIN: Modal Content  Unity-->
+        <div id="header-footer-modal-preview-unity" class="modal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- BEGIN: Modal Header -->
+                    <div class="modal-header">
+                        <h2 class="font-medium text-base mr-auto">Creation l'unite</h2>
+                    </div> <!-- END: Modal Header -->
+                    <!-- BEGIN: Modal Body -->
+                    <form method="POST" action="{{route('unity.create')}}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                            <div class="col-span-12 sm:col-span-12"> <label for="modal-form-1" class="form-label">Nom</label>
+                                <input name="name" id="modal-form-1" type="text" class="form-control" placeholder="Nom de unity"> </div>
+                                <div class="col-span-12 sm:col-span-12"> <label for="modal-form-2" class="form-label">Description</label> <textarea name="description" id="modal-form-2" type="text" class="form-control" placeholder="description pour le produit"> </textarea></div>
+                        </div> <!-- END: Modal Body -->
+                        <!-- BEGIN: Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" data-tw-dismiss="modal" class="btn btn-danger w-20 mr-1">Cancel</button>
+                            <button type="submit" class="btn btn-outline-primary w-20">Create</button> </div> <!-- END: Modal Footer -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- END: Modal Content Unity -->
 
 
 @endsection

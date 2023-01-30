@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +43,7 @@ Route::put('/updateUser/{user}',      [UserController::class, 'updateUser']) ->n
 Route::get('/edit/{user}',            [UserController::class, 'edit'])       ->name('user.edit')->middleware('auth');
 Route::get('/listUser',               [UserController::class, 'listUser'])   ->name('user.list')->middleware('auth');
 Route::post('/createUser',            [UserController::class, 'createUser']) ->name('user.create')->middleware('auth');
-Route::get('/createView',             [UserController::class, 'createView'])        ->name('user.createViewUser')->middleware('auth');
+Route::get('/createView',             [UserController::class, 'createView']) ->name('user.createViewUser')->middleware('auth');
 
 
 Route::get('/editTest/{user}',            [UserController::class, 'editTest'])      ->name('user.editTest')->middleware('auth');
@@ -51,5 +52,11 @@ Route::put('/updateUserList/{user}',        [UserController::class, 'updateUserL
 Route::get('/listProduct',            [ProductController::class, 'listProduct'])   ->name('product.list')->middleware('auth');
 Route::get('/create',                 [ProductController::class, 'create'])        ->name('product.createView')->middleware('auth');
 Route::post('/createProduct',         [ProductController::class, 'createProduct']) ->name('product.create')->middleware('auth');
+
+
+Route::post('/createCategory',        [CategoryController::class, 'createCategory'])->name('category.create')->middleware('auth');
+Route::post('/createDepot',           [CategoryController::class, 'createDepot'])->name('depot.create')->middleware('auth');
+Route::post('/createUnity',           [CategoryController::class, 'createUnity'])->name('unity.create')->middleware('auth');
+
 
 
