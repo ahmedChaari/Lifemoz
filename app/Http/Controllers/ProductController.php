@@ -41,9 +41,13 @@ class ProductController extends Controller
         'user_id'     => $user,
         'unity_id'    => $request->unity_id,
         'quantite'    => $request->quantite,
+        'achat'       => $request->achat,
+        'vente'       => $request->vente,
         'stock_min'   => $request->stock_min,
         'description' => $request->description,
     ]);
+
+  //  dd($product);
 
     Historic::create([
         'name'        => $name,
@@ -53,6 +57,27 @@ class ProductController extends Controller
     ]);
     return  redirect(route('product.list'));
    }
+
+// update product + create history
+
+    public function updateProduct(ProductRequest $request, Product $product){
+
+        $product->update([
+            'name'        => $request->name,
+            'category_id' => $request->category_id,
+            'depot_id'    => $request->depot_id,
+            'unity_id'    => $request->unity_id,
+            'quantite'    => $request->quantite,
+            'achat'       => $request->achat,
+            'vente'       => $request->vente,
+            'stock_min'   => $request->stock_min,
+            'description' => $request->description,
+            ]);
+        return  redirect(route('product.list'));
+    }
+
+
+
    public function create()
     {
         $categories = Category::get();
@@ -63,4 +88,19 @@ class ProductController extends Controller
                 ->with('categories',$categories)
                 ->with('unities',$unities);
     }
+
+
+    public function editProduct(Product $product)
+    {
+        $categories = Category::get();
+        $unities = Unity::get();
+        $depots = Depot::get();
+        return view('product.create')->with('product',$product)
+        ->with('unities',$unities)
+        ->with('categories', $categories)
+        ->with('depots', $depots);
+    }
+
+
+
 }

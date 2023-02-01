@@ -150,10 +150,9 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                             </div>
                         </a>
-
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="{{route('history.list')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
                             <div class="side-menu__title"> Journal <br> des modifications </div>
                         </a>

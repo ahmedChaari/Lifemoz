@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -46,12 +47,15 @@ Route::post('/createUser',            [UserController::class, 'createUser']) ->n
 Route::get('/createView',             [UserController::class, 'createView']) ->name('user.createViewUser')->middleware('auth');
 
 
-Route::get('/editTest/{user}',            [UserController::class, 'editTest'])      ->name('user.editTest')->middleware('auth');
-Route::put('/updateUserList/{user}',        [UserController::class, 'updateUserList'])  ->name('user.updateUserList')->middleware('auth');
+Route::get('/editTest/{user}',        [UserController::class, 'editTest'])      ->name('user.editTest')->middleware('auth');
+Route::put('/updateUserList/{user}',  [UserController::class, 'updateUserList'])  ->name('user.updateUserList')->middleware('auth');
 
+// products
 Route::get('/listProduct',            [ProductController::class, 'listProduct'])   ->name('product.list')->middleware('auth');
 Route::get('/create',                 [ProductController::class, 'create'])        ->name('product.createView')->middleware('auth');
 Route::post('/createProduct',         [ProductController::class, 'createProduct']) ->name('product.create')->middleware('auth');
+Route::put('/updateProduct/{product}',[ProductController::class, 'updateProduct']) ->name('product.update')->middleware('auth');
+Route::get('/editProduct/{product}',  [ProductController::class, 'editProduct'])   ->name('product.edit')->middleware('auth');
 
 
 Route::post('/createCategory',        [CategoryController::class, 'createCategory'])->name('category.create')->middleware('auth');
@@ -59,4 +63,6 @@ Route::post('/createDepot',           [CategoryController::class, 'createDepot']
 Route::post('/createUnity',           [CategoryController::class, 'createUnity'])->name('unity.create')->middleware('auth');
 
 
+//history
+Route::get('/listHistories',            [HistoryController::class, 'listHistories'])   ->name('history.list')->middleware('auth');
 

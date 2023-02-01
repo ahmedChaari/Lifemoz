@@ -13,7 +13,7 @@ class CategoryController extends Controller
     public function createCategory(CategoryRequest $request){
 
         Category::create([
-            'name'        => $request->name,
+            'name'        => $request->nameCategory,
             'description'  => $request->description,
         ]);
 
