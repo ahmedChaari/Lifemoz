@@ -2,26 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Category\CategoryRequest;
-use App\Models\Category;
-use App\Models\Depot;
 use App\Models\Historic;
 use App\Models\Unity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class CategoryController extends Controller
+class UnityController extends Controller
 {
 
+    public function createUnity(Request $request){
 
-    public function createCategory(CategoryRequest $request){
         $company = Auth::user()->company_id;
         $userCreate  = Auth::user()->id;
-        $name = 'create category';
-        Category::create([
-            'name'        => $request->nameCategory,
+        $name = 'create unity';
+        Unity::create([
             'company_id'  => $company ,
-            'description' => $request->description,
+            'name'        => $request->name,
+            'description'  => $request->description,
         ]);
         Historic::create([
             'name'        => $name,
@@ -30,13 +27,12 @@ class CategoryController extends Controller
         ]);
        // return  redirect(route('product.list'));
        return  redirect()->back() ;
-
     }
 
-    public function listCategory(){
+    public function listUnity(){
         $company = Auth::user()->company_id;
-        $categories = Category::where('company_id', $company)
+        $unities = Unity::where('company_id', $company)
                         ->paginate(10);
-        return view('category.list' , compact('categories'));
+        return view('unity.list' , compact('unities'));
     }
- }
+}

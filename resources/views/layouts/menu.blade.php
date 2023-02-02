@@ -45,20 +45,130 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="menu__title"> Dashboard <i data-lucide="chevron-down" class="menu__sub-icon "></i> </div>
                         </a>
                     </li>
-
-
-
                     <li>
-                        <a href="side-menu-light-post.html" class="menu">
-                            <div class="menu__icon"> <i data-lucide="file-text"></i> </div>
-                            <div class="menu__title"> List Evénement </div>
+                        <a href="" class="menu">
+                            <div class="menu__icon"> <i data-lucide="monitor"></i> </div>
+                            <div class="menu__title"> Entreprise </div>
                         </a>
                     </li>
                     <li>
-                        <a href="side-menu-light-calendar.html" href="" class="menu">
-                            <div class="menu__icon"> <i data-lucide="calendar"></i> </div>
-                            <div class="menu__title"> Calendar </div>
+                        <a href="{{route('history.list')}}" href="" class="menu">
+                            <div class="menu__icon"> <i data-lucide="file-text"></i> </div>
+                            <div class="menu__title"> Journal <br> des modifications </div>
                         </a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="settings"></i> </div>
+                            <div class="menu__title">
+                                Paramétrage
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Paramétrage général </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Liste Role </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Liste Depot </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="users"></i> </div>
+                            <div class="menu__title">
+                                User
+                                <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('user.list') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Liste users </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('user.createViewUser')}}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Create user</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                            <div class="menu__title">
+                                Stock
+                                <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('depot.list') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Liste Depot </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('unity.list') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Liste Unite</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('category.list') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Liste Categorie</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="side-menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Inventaire</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="menu">
+                            <div class="menu__icon"> <i data-lucide="box"></i> </div>
+                            <div class="menu__title">
+                                Product
+                                <div class="menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('product.list') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Liste products </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('product.createView') }}" class="menu">
+                                    <div class="menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="menu__title"> Create product</div>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
 
@@ -152,12 +262,46 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                     </li>
                     <li>
+                        <a href="" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="monitor"></i> </div>
+                            <div class="side-menu__title"> Entreprise </div>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{route('history.list')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="file-text"></i> </div>
                             <div class="side-menu__title"> Journal <br> des modifications </div>
                         </a>
                     </li>
-
+                    <li>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="settings"></i> </div>
+                            <div class="side-menu__title">
+                                Paramétrage
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Paramétrage général </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Liste Role </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Liste Depot </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="users"></i> </div>
@@ -170,7 +314,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li>
                                 <a href="{{ route('user.list') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> List users </div>
+                                    <div class="side-menu__title"> Liste users </div>
                                 </a>
                             </li>
                             <li>
@@ -181,8 +325,41 @@ License: You must have a valid license purchased only from themeforest(the above
                             </li>
                         </ul>
                     </li>
-
-
+                    <li>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="hard-drive"></i> </div>
+                            <div class="side-menu__title">
+                                Stock
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="{{ route('depot.list') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Liste Depot </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('unity.list') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Liste Unite</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('category.list') }}" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Liste Categorie</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title"> Inventaire</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="javascript:;" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
@@ -195,7 +372,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <li>
                                 <a href="{{ route('product.list') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                    <div class="side-menu__title"> List products </div>
+                                    <div class="side-menu__title"> Liste products </div>
                                 </a>
                             </li>
                             <li>

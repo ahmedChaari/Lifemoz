@@ -15,6 +15,7 @@ class CreateDepotsTable extends Migration
     {
         Schema::create('depots', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('company_id')->nullable();
             $table->string('name');
             $table->softDeletes();
             $table->timestamps();

@@ -7,7 +7,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="font-medium text-base mr-auto">
-                        {{ isset($category) ? 'Edite Product' : 'Add a new Product' }}
+                        {{ isset($category) ? 'MODIFIER PRODUIT' : 'AJOUTER PRODUIT' }}
                     </h2>
                 </div>
                 <div id="form-validation" class="p-5">
@@ -93,7 +93,7 @@
                                         title="Ajouter une Unite "> <i data-lucide="plus" class="w-3 h-3"></i> </a>
                                         </span> </label>
                                         <select class="form-select mt-2 sm:mr-2" name="unity_id" aria-label="Default select example">
-                                            <option value="" selected disabled>--------</option>
+                                            <option value="{{ old('achat') }}" selected disabled>--------</option>
                                             @foreach($unities as $unity)
                                                 <option value="{{ $unity->id }}"
                                                 @if(isset($product))
@@ -166,7 +166,7 @@
                             </div>
 
                             <button type="submit"
-                            class="btn btn-primary mt-5"> {{ isset($category) ? 'Update' : 'Create' }}</button>
+                            class="btn btn-primary mt-5"> {{ isset($product) ? 'Update' : 'Create' }}</button>
                         </form>
                     </div>
                 </div>

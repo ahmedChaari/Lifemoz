@@ -32,8 +32,8 @@ class ProductRequest extends FormRequest
             'stock_min'       =>  'required|numeric',
             'quantite'        =>  'required|numeric|gt:stock_min',
             'description'     =>  'nullable',
-            'vente'           =>  'nullable|numeric',
-            'achat'           =>  'nullable|numeric|gt:vente',
+            'achat'           =>  'nullable|numeric',
+            'vente'           =>  'nullable|numeric|gt:achat',
         ];
     }
 }

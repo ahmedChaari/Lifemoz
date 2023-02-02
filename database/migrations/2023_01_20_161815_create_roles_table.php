@@ -15,6 +15,7 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('company_id')->nullable();
             $table->string('name');
             $table->text('description')->nullable();
             $table->softDeletes();

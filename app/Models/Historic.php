@@ -18,5 +18,8 @@ class Historic extends Model
     {
         return $this->belongsTo(User::class);
     }
-
+    public function company(): ?BelongsTo
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

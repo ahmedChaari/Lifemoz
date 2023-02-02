@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
 use App\Models\Role;
 use App\Models\Service;
 use App\Models\User;
@@ -25,8 +26,9 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'id'        => $this->faker->uuid,
-            'name'      => $this->faker->name,
+            'id'          => $this->faker->uuid,
+            'name'        => $this->faker->name,
+            'company_id'  => Company::all()->random()->id,
             //'email'     => $this->faker->unique()->safeEmail,
             'tel'       => $this->faker->phoneNumber,
             'fonction'  => $this->faker->name,

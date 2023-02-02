@@ -4,11 +4,11 @@
  <!-- BEGIN: Content -->
  <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
-        List of users
+        LISTE DES UTILISATEURS
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <a href="{{ route('user.createViewUser')}}"  class="btn btn-primary shadow-md mr-2">Add New User</a>
+            <a href="{{ route('user.createViewUser')}}"  class="btn btn-primary shadow-md mr-2">AJOUTTER UN UTILISATEUR</a>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
                     <span class="w-5 h-5 flex items-center justify-center"> <i class="w-4 h-4" data-lucide="plus"></i> </span>
@@ -77,7 +77,7 @@
                     </tr>
                     @endforeach
                     @else
-                    <h3 class="text-center mt-5 mb-5">Pas encore des users</h3>
+                    <h3 class="text-center mt-5 mb-5">Pas encore des utilisateur</h3>
                     @endif
                 </tbody>
             </table>

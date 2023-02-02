@@ -15,24 +15,30 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+    private  $services;
+    private $roles;
+
+    public function __construct(){
+        $this->services = Service::get();
+        $this->roles = Role::get();
+
+    }
+
     public function listUser(Request $request)
     {
-        $users = User::paginate(10);
-        return view('user.list' , compact('users'))
-               ;
+        $company  = Auth::user()->company_id;
+        $users = User::where('company_id', $company)->paginate(10);
+        return view('user.list' , compact('users'));
     }
 
 
     public function edit(User $user)
     {
-        $services = Service::get();
-        $roles = Role::get();
         return view('user.updateUser')->with('user',$user)
-        ->with('services', $services)
-        ->with('roles', $roles);
+        ->with('services', $this->services)
+        ->with('roles', $this->roles);
     }
-
-
 
     public function editTest(User $user)
     {
@@ -40,35 +46,56 @@ class UserController extends Controller
     }
 
     public function updateUser(UserUpdateRequest $request,User $user){
+
+        $company     = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
+        $name = 'update mon profile';
         $user->update([
             'name'       => $request->name,
             'email'      => $request->email,
             'password'   => $request->password,
             'password' => Hash::make($request['password']),
             ]);
+            Historic::create([
+                'name'        => $name,
+                'company_id'  => $company,
+                'user_id'     => $userCreate,
+                'user_create' => $user->name,
+            ]);
+
 
         return redirect(route('home'));
     }
 
     public function createView()
     {
-        $services = Service::get();
-        $roles = Role::get();
         return view('user.create')
-                ->with('services',$services)
-                ->with('roles',$roles);
+                ->with('services',$this->services)
+                ->with('roles',$this->roles);
     }
 
     public function createUser(CreateUserRequest $request){
-       User::create([
+        $company     = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
+        $name = 'create user';
+        $user = User::create([
             'name'       => $request->name,
             'email'      => $request->email,
             'tel'        => $request->tel,
             'fonction'   => $request->fonction,
+            'company_id' => $company,
+            'user_id'    => $userCreate,
             'service_id' => $request->service_id,
             'role_id'    => $request->role_id,
             'password'   => Hash::make($request->password),
         ]);
+        Historic::create([
+            'name'        => $name,
+            'company_id'  => $company,
+            'user_id'     => $userCreate,
+            'user_create' => $user->name,
+        ]);
+
 
         return  redirect(route('user.list'));
     }
@@ -80,6 +107,7 @@ class UserController extends Controller
 
     public function updateUserList(UserUpdateRequest $request,User $user){
         $name = 'Update user';
+        $company     = Auth::user()->company_id;
         $userCreate  = Auth::user()->id;
         $user->update([
             'name'       => $request->name,
@@ -94,11 +122,10 @@ class UserController extends Controller
             ]);
             Historic::create([
                 'name'        => $name,
+                'company_id'  => $company,
                 'user_id'     => $userCreate,
+                'user_create' => $user->name,
             ]);
-
-
-
         return redirect(route('user.list'));
     }
 

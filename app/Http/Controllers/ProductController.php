@@ -14,16 +14,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-   public function listProduct()
-   {
-        $category = Category::all();
-        $unity = Unity::all();
-        $depot = Depot::all();
-        $user = User::all();
 
-        $products = Product::orderBy('created_at', 'DESC')
-        ->paginate(10)
-                    ;
+   public function listProduct(){
+       $company = Auth::user()->company_id;
+       $category = Category::get();
+        $unity = Unity::get();
+        $depot = Depot::get();
+        $user = User::get();
+
+        $products = Product::where('company_id' ,$company )
+        ->orderBy('created_at', 'DESC')
+        ->paginate(10);
+
         return view('product.list' , compact('products'))
         ->with('category' , $category)
         ->with('unity'    , $unity)
@@ -31,26 +33,28 @@ class ProductController extends Controller
         ->with('user'      , $user);
    }
    public function createProduct(ProductRequest $request){
+        $company = Auth::user()->company_id;
+        $user = Auth::user()->id;
+        $name = 'Create product';
 
-    $user  = Auth::user()->id;
-    $name = 'Create product';
-    $product = Product::create([
-        'name'        => $request->name,
-        'category_id' => $request->category_id,
-        'depot_id'    => $request->depot_id,
-        'user_id'     => $user,
-        'unity_id'    => $request->unity_id,
-        'quantite'    => $request->quantite,
-        'achat'       => $request->achat,
-        'vente'       => $request->vente,
-        'stock_min'   => $request->stock_min,
-        'description' => $request->description,
-    ]);
+        $product = Product::create([
+            'name'        => $request->name,
+            'category_id' => $request->category_id,
+            'depot_id'    => $request->depot_id,
+            'user_id'     => $user,
+            'company_id'  => $company,
+            'unity_id'    => $request->unity_id,
+            'quantite'    => $request->quantite,
+            'achat'       => $request->achat,
+            'vente'       => $request->vente,
+            'stock_min'   => $request->stock_min,
+            'description' => $request->description,
+        ]);
 
-  //  dd($product);
 
     Historic::create([
         'name'        => $name,
+        'company_id'  => $company,
         'product_id'  => $product->id,
         'quantite'    => $product->quantite,
         'user_id'     => $user,
@@ -62,6 +66,10 @@ class ProductController extends Controller
 
     public function updateProduct(ProductRequest $request, Product $product){
 
+
+        $company = Auth::user()->company_id;
+        $user = Auth::user()->id;
+        $name = 'update product';
         $product->update([
             'name'        => $request->name,
             'category_id' => $request->category_id,
@@ -73,6 +81,15 @@ class ProductController extends Controller
             'stock_min'   => $request->stock_min,
             'description' => $request->description,
             ]);
+
+
+    Historic::create([
+        'name'        => $name,
+        'company_id'  => $company,
+        'product_id'  => $product->id,
+        'quantite'    => $product->quantite,
+        'user_id'     => $user,
+    ]);
         return  redirect(route('product.list'));
     }
 
@@ -80,25 +97,26 @@ class ProductController extends Controller
 
    public function create()
     {
-        $categories = Category::get();
-        $unities = Unity::get();
-        $depots = Depot::get();
+        $company = Auth::user()->company_id;
+        $category = Category::where('company_id', $company)->get();
+        $unity = Unity::where('company_id', $company)->get();
+        $depot = Depot::where('company_id', $company)->get();
         return view('product.create')
-                ->with('depots',$depots)
-                ->with('categories',$categories)
-                ->with('unities',$unities);
+            ->with('depots',$depot)
+            ->with('categories',$category)
+            ->with('unities',$unity);
     }
 
 
-    public function editProduct(Product $product)
-    {
-        $categories = Category::get();
-        $unities = Unity::get();
-        $depots = Depot::get();
+    public function editProduct(Product $product){
+        $company = Auth::user()->company_id;
+        $category = Category::where('company_id', $company)->get();
+        $unity = Unity::where('company_id', $company)->get();
+        $depot = Depot::where('company_id', $company)->get();
         return view('product.create')->with('product',$product)
-        ->with('unities',$unities)
-        ->with('categories', $categories)
-        ->with('depots', $depots);
+        ->with('unities',$unity)
+        ->with('categories', $category)
+        ->with('depots', $depot);
     }
 
 

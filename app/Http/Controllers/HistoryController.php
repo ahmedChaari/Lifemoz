@@ -10,9 +10,7 @@ class HistoryController extends Controller
     public function listHistories(){
 
         $histories = Historic::paginate(10);
-
-        return view('history.list' , compact('histories'))
-               ;
+        return view('history.list' , compact('histories'));
 
     }
 }

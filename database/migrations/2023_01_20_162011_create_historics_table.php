@@ -15,10 +15,12 @@ class CreateHistoricsTable extends Migration
     {
         Schema::create('historics', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('company_id');
             $table->string('name');
             $table->integer('quantite')->nullable();
             $table->foreignUuid('product_id')->nullable();
             $table->foreignUuid('user_id');
+            $table->string('user_create')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

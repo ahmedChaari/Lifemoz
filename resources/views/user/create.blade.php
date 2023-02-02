@@ -8,18 +8,18 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="font-medium text-base mr-auto">
-                        New user
+                        NOUVEL UTILISATEUR
                     </h2>
                 </div>
                 <div id="form-validation" class="p-5">
                     <div class="preview">
                         <form class="" action="{{route('user.create')}}" enctype="multipart/form-data"
-                        method="POST" >
+                             method="POST" >
                             @csrf
 
                             <div class="input-form mt-3">
-                                <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row"> Name <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, at least 3 characters</span> </label>
-                                <input id="name" type="text" name="name"
+                                <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row"> Nom <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, at least 3 characters</span> </label>
+                                <input id="name" type="text" name="name" value="{{ old('name') }}"
 
                                 class="form-control" placeholder="Name" minlength="2" required>
                                 @error('name')
@@ -31,7 +31,7 @@
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Email <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, email address format</span> </label>
                                 <input id="email" type="email" name="email"
-
+                                value="{{ old('email') }}"
                                 class="form-control" placeholder="email" minlength="2" required>
                                 @error('email')
                                 <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
@@ -42,7 +42,7 @@
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Tel <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, Tel format</span> </label>
                                 <input id="tel" type="text" name="tel"
-
+                                value="{{ old('tel') }}"
                                 class="form-control" placeholder="0 XX XX XX XX" minlength="2" required>
                                 @error('tel')
                                 <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
@@ -53,7 +53,7 @@
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Fonction <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, at least 3 characters</span> </label>
                                 <input id="fonction" type="text" name="fonction"
-
+                                value="{{ old('fonction') }}"
                                 class="form-control" placeholder="Fonction Occupée" minlength="2" required>
                                 @error('fonction')
                                 <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
@@ -63,7 +63,7 @@
                             <div class="input-form mt-3">
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row">
                                     Service <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, Service</span> </label>
-                                <select class="form-select mt-2 sm:mr-2" name="service" aria-label="Default select example">
+                                <select class="form-select mt-2 sm:mr-2" name="service_id" aria-label="Default select example">
                                         <option value="" selected disabled>--------</option>
                                     @foreach($services as $service)
                                         <option value="{{ $service->id }}"

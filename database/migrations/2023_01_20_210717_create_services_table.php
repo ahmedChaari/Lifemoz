@@ -15,6 +15,7 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->foreignUuid('company_id')->nullable();
             $table->string('name');
             $table->softDeletes();
             $table->timestamps();
