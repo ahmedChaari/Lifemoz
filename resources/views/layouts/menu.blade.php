@@ -76,13 +76,13 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="menu">
+                                <a href="{{ route('role.list') }}" class="menu">
                                     <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="menu__title"> Liste Role </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="menu">
+                                <a href="{{ route('depot.list') }}" class="menu">
                                     <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="menu__title"> Liste Depot </div>
                                 </a>
@@ -283,13 +283,13 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                         <ul class="">
                             <li>
-                                <a href="" class="side-menu">
+                                <a href="{{ route('company.create') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Paramétrage général </div>
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="side-menu">
+                                <a href="{{ route('role.list') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Liste Role </div>
                                 </a>

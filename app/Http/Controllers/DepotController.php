@@ -32,6 +32,7 @@ class DepotController extends Controller
     public function listDepot(){
         $company = Auth::user()->company_id;
         $depots = Depot::where('company_id', $company)
+        ->orWhere('company_id', null)
                         ->paginate(10);
         return view('depot.list' , compact('depots'));
     }

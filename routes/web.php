@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepotController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UnityController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -76,6 +77,14 @@ Route::get('/listDepot',              [DepotController::class, 'listDepot'])  ->
 
 
 //history
+Route::get('/listHistories',          [HistoryController::class, 'listHistories'])   ->name('history.list')->middleware('auth');
 
-Route::get('/listHistories',           [HistoryController::class, 'listHistories'])   ->name('history.list')->middleware('auth');
+//role
+Route::get('/listRole',               [RoleController::class, 'listRole'])  ->name('role.list')->middleware('auth');
+Route::post('/createRole',           [RoleController::class, 'createRole']) ->name('role.create')->middleware('auth');
+
+//compnay
+Route::get('/company', function () { return view('company.create');})->name('company.create')->middleware('auth');;
+
+
 
