@@ -3,9 +3,7 @@
 
  <!-- BEGIN: Content -->
    <div class="content" style="padding-top: 0rem !important;">
-    <h2 class="intro-y text-lg font-medium mt-10">
-          LISTE DES PRODUITS
-    </h2>
+    <h2 class="intro-y text-lg font-medium mt-10">LISTE DES PRODUITS</h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <a href="{{ route('product.createView') }}"  class="btn btn-primary shadow-md mr-2">AJOUTER PRODUIT</a>
@@ -70,20 +68,25 @@
                         <td class="text-center">{{ $product->depot->name }}</td>
                         <td class="w-40">
                             @if ( $product->quantite > $product->stock_min)
-
                             <div class="flex items-center justify-center text-success">
-
                                 {{ $product->quantite }}</div>
                             @else
                             <div class="flex items-center justify-center text-danger">
-
                               {{ $product->quantite }}</div>
                             @endif
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3" href="{{ route('product.edit', $product->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                                <form method="POST" action="{{ route('product.delete', $product->id) }}">
+                                    @csrf
+                                    <input name="_method" type="hidden" value="DELETE">
+                                <a class="flex items-center text-danger"
+                                    href="javascript:;" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')"
+                                    type="submit">
+                                    <!--  data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" -->
+                                <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -99,54 +102,28 @@
     </div>
    </div>
   <!-- END: Content -->
-
-
-
-
- <!-- BEGIN: Modal Toggle -->
- <!-- BEGIN: Modal Content -->
- <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
-     <div class="modal-dialog">
-         <div class="modal-content">
-             <!-- BEGIN: Modal Header -->
-             <div class="modal-header">
-                 <div class="dropdown sm:hidden"> <a class="dropdown-toggle w-5 h-5 block" href="javascript:;" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="more-horizontal" class="w-5 h-5 text-slate-500"></i> </a>
-                     <div class="dropdown-menu w-40">
-                         <ul class="dropdown-content">
-                             <li> <a href="javascript:;" class="dropdown-item"> <i data-lucide="file" class="w-4 h-4 mr-2"></i> Download Docs </a> </li>
-                         </ul>
-                     </div>
-                 </div>
-             </div> <!-- END: Modal Header -->
-             <!-- BEGIN: Modal Body -->
-
-                <div class="modal-body mt-3"> <label>Activer</label>
-                    <div class="mt-2">
-                        <div class="form-check form-switch">
-                            <input id="checkbox-switch-7" class="form-check-input" type="checkbox">
-                            <label class="form-check-label" for="checkbox-switch-7">Activer le compte d'un utilisateur</label>
-                        </div>
+<!-- BEGIN: Delete Confirmation Modal -->
+<div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body p-0">
+                <div class="p-5 text-center">
+                    <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
+                    <div class="text-3xl mt-5">Are you sure?</div>
+                    <div class="text-slate-500 mt-2">
+                        Do you really want to delete these records?
+                        <br>
+                        This process cannot be undone.
                     </div>
                 </div>
-              <!-- END: Modal Body -->
-             <!-- BEGIN: Modal Footer -->
-             <div class="modal-footer">
-                <button type="button" data-tw-dismiss="modal" class="btn btn-danger w-20 mr-1">Cancel</button>
-                <button type="button" class="btn btn-primary w-20">Send</button> </div> <!-- END: Modal Footer -->
-         </div>
-     </div>
- </div> <!-- END: Modal Content -->
-
-
-
-
-
-
-
-
-
-
-
-
+                <div class="px-5 pb-8 text-center">
+                    <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                    <button type="button" class="btn btn-danger w-24">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END: Delete Confirmation Modal -->
 
 @endsection

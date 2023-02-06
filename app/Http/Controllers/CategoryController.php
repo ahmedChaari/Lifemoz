@@ -39,4 +39,20 @@ class CategoryController extends Controller
                         ->paginate(10);
         return view('category.list' , compact('categories'));
     }
+
+    public function deleteCategory($id){
+        Category::find($id)->delete();
+
+        $name = 'Delete category';
+        $company     = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
+
+        Historic::create([
+            'name'        => $name,
+            'company_id'  => $company,
+            'user_id'     => $userCreate,
+            'user_create' => $id->name,
+        ]);
+        return redirect()->back();
+    }
  }

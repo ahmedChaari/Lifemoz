@@ -1,6 +1,30 @@
 @extends('layouts.menu')
 @section('content')
 
+<!-- BEGIN: Delete Confirmation Modal -->
+<div id="delete-confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="p-5 text-center">
+                        <i data-lucide="x-circle" class="w-16 h-16 text-danger mx-auto mt-3"></i>
+                        <div class="text-3xl mt-5">Are you sure?</div>
+                        <div class="text-slate-500 mt-2">
+                            Do you really want to delete these records?
+                            <br>
+                            This process cannot be undone.
+                        </div>
+                    </div>
+                    <div class="px-5 pb-8 text-center">
+                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
+                        <button type="button" class="btn btn-danger w-24">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<!-- END: Delete Confirmation Modal -->
+
 
 <div class="content" style="padding-top: 0rem;">
     <h2 class="intro-y text-lg font-medium mt-10">
@@ -61,7 +85,20 @@
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3" href=""> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+
+
+                                <form method="POST" action="{{ route('unity.delete', $unity->id) }}">
+                                    @csrf
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button class="flex items-center text-danger deleteUnityBtn"
+                                    type="submit" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')"
+                                    >
+                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </button>
+                                </form>
+
+
+
+
                             </div>
                         </td>
                     </tr>
@@ -104,5 +141,32 @@
         </div>
     </div>
 <!-- END: Modal Content depot -->
+
+
+@endsection
+
+@section('scripts')
+
+<script type="text/javascript">
+
+     $('#delete-confirmation-modal').click(function(event) {
+          var form =  $(this).closest("form");
+          var name = $(this).data("name");
+          event.preventDefault();
+          swal({
+              title: `Are you sure you want to delete this record?`,
+              text: "If you delete this, it will be gone forever.",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+
+</script>
 
 @endsection

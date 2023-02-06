@@ -24,6 +24,7 @@ License: You must have a valid license purchased only from themeforest(the above
          <title>{{ config('app.name', 'Calander') }}</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}"/>
+
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
@@ -398,8 +399,11 @@ License: You must have a valid license purchased only from themeforest(the above
 
         @yield('scripts')
         <!-- BEGIN: JS Assets-->
-       <script src="{{ asset('dist/js/app.js') }}"></script>
+
+
+        <script src="{{ asset('dist/js/app.js') }}"></script>
         <!-- END: JS Assets-->
-         <script src="dist/js/ckeditor-classic.js"></script>
+        <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
+
     </body>
 </html>

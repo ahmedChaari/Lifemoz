@@ -1,13 +1,11 @@
 @extends('layouts.menu')
 @section('content')
-
-
     <!-- BEGIN: Create new Product -->
         <div class="modal-dialog mt-3">
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="font-medium text-base mr-auto">
-                        {{ isset($category) ? 'MODIFIER PRODUIT' : 'AJOUTER PRODUIT' }}
+                        {{ isset($product) ? 'MODIFIER PRODUIT' : 'AJOUTER PRODUIT' }}
                     </h2>
                 </div>
                 <div id="form-validation" class="p-5">
@@ -164,7 +162,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <button type="submit"
                             class="btn btn-primary mt-5"> {{ isset($product) ? 'Update' : 'Create' }}</button>
                         </form>
@@ -172,10 +169,7 @@
                 </div>
             </div>
         </div>
-
     <!-- END: New Order Modal -->
-
-
     <!-- BEGIN: Modal Content  category-->
         <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog">

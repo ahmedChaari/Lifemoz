@@ -130,4 +130,21 @@ class UserController extends Controller
     }
 
 
+    public function deleteUser($id){
+
+        $name = 'Delete user';
+        $company     = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
+
+        User::find($id)->delete();
+
+        Historic::create([
+            'name'        => $name,
+            'company_id'  => $company,
+            'user_id'     => $userCreate,
+            'user_create' => $id->name,
+        ]);
+        return redirect()->back();
+    }
+
 }

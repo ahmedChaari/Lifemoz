@@ -36,4 +36,20 @@ class UnityController extends Controller
                         ->paginate(10);
         return view('unity.list' , compact('unities'));
     }
+
+    public function deleteUnity($id){
+        Unity::find($id)->delete();
+
+        $name = 'Delete unity';
+        $company     = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
+
+        Historic::create([
+            'name'        => $name,
+            'company_id'  => $company,
+            'user_id'     => $userCreate,
+            'user_create' => $id->name,
+        ]);
+        return redirect()->back();
+    }
 }

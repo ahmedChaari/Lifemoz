@@ -119,6 +119,19 @@ class ProductController extends Controller
         ->with('depots', $depot);
     }
 
+    public function deleteProduct($id){
+        Product::find($id)->delete();
+        $name = 'Delete product';
+        $company     = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
 
+        Historic::create([
+            'name'        => $name,
+            'company_id'  => $company,
+            'user_id'     => $userCreate,
+            'user_create' => $id->name,
+        ]);
+        return redirect()->back();
+    }
 
 }

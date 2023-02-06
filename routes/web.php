@@ -43,15 +43,16 @@ Route::post('/store',                 [CalendarController::class, 'store'])->nam
 
 
 //users
-Route::put('/updateUser/{user}',      [UserController::class, 'updateUser']) ->name('user.update')->middleware('auth');
-Route::get('/edit/{user}',            [UserController::class, 'edit'])       ->name('user.edit')->middleware('auth');
-Route::get('/listUser',               [UserController::class, 'listUser'])   ->name('user.list')->middleware('auth');
-Route::post('/createUser',            [UserController::class, 'createUser']) ->name('user.create')->middleware('auth');
-Route::get('/createView',             [UserController::class, 'createView']) ->name('user.createViewUser')->middleware('auth');
+Route::put('/updateUser/{user}',  [UserController::class, 'updateUser']) ->name('user.update')->middleware('auth');
+Route::get('/edit/{user}',        [UserController::class, 'edit'])       ->name('user.edit')->middleware('auth');
+Route::get('/listUser',           [UserController::class, 'listUser'])   ->name('user.list')->middleware('auth');
+Route::post('/createUser',        [UserController::class, 'createUser']) ->name('user.create')->middleware('auth');
+Route::get('/createView',         [UserController::class, 'createView']) ->name('user.createViewUser')->middleware('auth');
+Route::delete('/deleteUser/{id}', [UserController::class, 'deleteUser'])->name('user.delete')->middleware('auth');
 
 
-Route::get('/editTest/{user}',        [UserController::class, 'editTest'])      ->name('user.editTest')->middleware('auth');
-Route::put('/updateUserList/{user}',  [UserController::class, 'updateUserList'])  ->name('user.updateUserList')->middleware('auth');
+Route::get('/editTest/{user}',      [UserController::class, 'editTest'])      ->name('user.editTest')->middleware('auth');
+Route::put('/updateUserList/{user}',[UserController::class, 'updateUserList'])  ->name('user.updateUserList')->middleware('auth');
 
 // products
 Route::get('/listProduct',            [ProductController::class, 'listProduct'])   ->name('product.list')->middleware('auth');
@@ -59,21 +60,25 @@ Route::get('/create',                 [ProductController::class, 'create'])     
 Route::post('/createProduct',         [ProductController::class, 'createProduct']) ->name('product.create')->middleware('auth');
 Route::put('/updateProduct/{product}',[ProductController::class, 'updateProduct']) ->name('product.update')->middleware('auth');
 Route::get('/editProduct/{product}',  [ProductController::class, 'editProduct'])   ->name('product.edit')->middleware('auth');
+Route::delete('/deleteProduct/{id}',  [ProductController::class, 'deleteProduct'])->name('product.delete')->middleware('auth');
 
 
 Route::post('/createCategory',        [CategoryController::class, 'createCategory'])->name('category.create')->middleware('auth');
 Route::get('/listCategory',           [CategoryController::class, 'listCategory'])  ->name('category.list')->middleware('auth');
+Route::delete('/deleteCategory/{id}', [CategoryController::class, 'deleteCategory'])->name('category.delete')->middleware('auth');
 
 
 //unity
-Route::post('/createUnity',[UnityController::class, 'createUnity'])->name('unity.create')->middleware('auth');
-Route::get('/listUnity',[UnityController::class, 'listUnity'])->name('unity.list')->middleware('auth');
+Route::post('/createUnity',  [UnityController::class, 'createUnity'])->name('unity.create')->middleware('auth');
+Route::get('/listUnity',     [UnityController::class, 'listUnity'])->name('unity.list')->middleware('auth');
+Route::delete('/deleteUnity/{id}',[UnityController::class, 'deleteUnity'])->name('unity.delete')->middleware('auth');
 
 //depot
-Route::post('/createDepot',           [DepotController::class, 'createDepot'])->name('depot.create')->middleware('auth');
-Route::put('/updateDepot',            [DepotController::class, 'updateDepot'])->name('depot.update')->middleware('auth');
-Route::get('/editDepot/{depot}',      [DepotController::class, 'editDepot']) ->name('depot.edit')->middleware('auth');
-Route::get('/listDepot',              [DepotController::class, 'listDepot'])  ->name('depot.list')->middleware('auth');
+Route::post('/createDepot',       [DepotController::class, 'createDepot'])->name('depot.create')->middleware('auth');
+Route::put('/updateDepot',        [DepotController::class, 'updateDepot'])->name('depot.update')->middleware('auth');
+Route::get('/editDepot/{depot}',  [DepotController::class, 'editDepot']) ->name('depot.edit')->middleware('auth');
+Route::get('/listDepot',          [DepotController::class, 'listDepot'])  ->name('depot.list')->middleware('auth');
+Route::delete('/deleteDepot/{id}',[DepotController::class, 'deleteDepot'])->name('depot.delete')->middleware('auth');
 
 
 //history
