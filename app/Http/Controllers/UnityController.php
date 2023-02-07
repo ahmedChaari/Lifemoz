@@ -25,7 +25,7 @@ class UnityController extends Controller
             'company_id'  => $company,
             'user_id'     => $userCreate,
         ]);
-       // return  redirect(route('product.list'));
+       // return  redirect(route('Product.list'));
        return  redirect()->back() ;
     }
 

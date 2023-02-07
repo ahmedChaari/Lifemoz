@@ -59,7 +59,7 @@ class ProductController extends Controller
         'quantite'    => $product->quantite,
         'user_id'     => $user,
     ]);
-    return  redirect(route('product.list'));
+    return  redirect(route('Product.list'));
    }
 
 // update product + create history
