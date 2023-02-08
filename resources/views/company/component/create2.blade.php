@@ -17,8 +17,8 @@
                     <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Créer un Nouveau Compte</div>
                 </div>
                 <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
-                    <button class="w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400">2</button> 
-                    <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Configurez Votre Profil</div>
+                    <button class="w-10 h-10 rounded-full btn btn-primary">2</button>
+                    <div class="lg:w-32 font-medium text-base lg:mt-3 ml-3 lg:mx-auto">Configurez Votre Profil</div>
                 </div>
                 <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
                     <button class="w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400">3</button>
@@ -29,29 +29,45 @@
                     <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Configurer le Compte</div>
                 </div>
                 <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
-                    <button class="w-10 h-10 rounded-full btn btn-primary">5</button>
-                    <div class="lg:w-32 font-medium text-base lg:mt-3 ml-3 lg:mx-auto" >Finalisez Votre Compte</div>
+                    <button class="w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400">5</button>
+                    <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Finalisez Votre Compte</div>
                 </div>
             </div>
             <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-slate-200/60 dark:border-darkmode-400">
-                <div class="font-medium text-base">Finalisez Votre Compte</div>
+                <div class="font-medium text-base">Configurez Votre Profil</div>
                 <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
                     <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-1" class="form-label">Votre SitWeb</label>
-                        <input id="input-wizard-1" type="text" class="form-control" placeholder="">
+                        <label for="input-wizard-1" class="form-label">Nom de Gerant</label>
+                        <input id="input-wizard-1" type="text" class="form-control" placeholder="Nom de Gerant">
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-6">
-                        <form data-single="true" action="/file-upload" class="dropzone">
-                            <div class="fallback"> <input name="file" type="file" /> </div>
-                            <div class="dz-message" data-dz-message>
-                                <div class="text-lg font-medium">Drop files here or click to upload.</div>
-                                <div class="text-slate-500"> This is just a demo dropzone. Selected files are <span class="font-medium">not</span> actually uploaded. </div>
-                            </div>
-                        </form>
+                        <label for="input-wizard-2" class="form-label">Email</label>
+                        <input id="input-wizard-2" type="text" class="form-control" placeholder="example@gmail.com">
                     </div>
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-3" class="form-label">Ville</label>
+                        <select id="input-wizard-3" class="form-select">
+                            <option>Rabat</option>
+                            <option>Marrakech</option>
+                            <option>Kenitra</option>
+                            <option>Sale</option>
+                        </select>                    </div>
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="input-wizard-4" class="form-label">Pays</label>
+                        <select id="input-wizard-4" class="form-select">
+                            <option>Maroc</option>
+                            <option>France</option>
+                            <option>Egypte</option>
+                            <option>UAE</option>
+                        </select>
+                    </div>
+                    <div class="intro-y col-span-12 sm:col-span-16">
+                        <label for="input-wizard-5" class="form-label">Adresse Complète</label>
+                        <textarea name="" id="input-wizard-4" class="form-control" cols="30" placeholder="Rue 58 BD N°12" rows="10"></textarea>
+                        </div>
                     <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
                         <button class="btn btn-secondary w-24">Previous</button>
-                        <button class="btn btn-primary w-24 ml-2">Fin</button>
+                        <button class="btn btn-primary w-24 ml-2">Next</button>
                     </div>
                 </div>
             </div>

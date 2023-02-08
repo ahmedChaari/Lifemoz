@@ -1,5 +1,6 @@
 
 
+
 @extends('layouts.menu')
 @section('content')
 <!-- BEGIN: Content -->
