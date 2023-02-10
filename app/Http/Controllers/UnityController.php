@@ -48,7 +48,7 @@ class UnityController extends Controller
             'name'        => $name,
             'company_id'  => $company,
             'user_id'     => $userCreate,
-            'user_create' => $id->name,
+            //'user_create' => $id->name,
         ]);
         return redirect()->back();
     }

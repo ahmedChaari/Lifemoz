@@ -24,7 +24,13 @@ License: You must have a valid license purchased only from themeforest(the above
          <title>{{ config('app.name', 'Calander') }}</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}"/>
-
+        
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<style>
+    .swal-button--confirm{
+        background-color:red !important;
+    }
+</style>
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
@@ -146,8 +152,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="menu__title"> Inventaire</div>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
+                        </u:
                     <li>
                         <a href="javascript:;" class="menu">
                             <div class="menu__icon"> <i data-lucide="box"></i> </div>
@@ -399,8 +404,27 @@ License: You must have a valid license purchased only from themeforest(the above
 
         @yield('scripts')
         <!-- BEGIN: JS Assets-->
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
-
+        <script type="text/javascript">
+            $('.delete-confirm').on('click', function (e) {
+                e.preventDefault();
+                const url = $(this).attr('href');
+                swal({
+                    title: 'Are you sure?',
+                    text: 'This record and it`s details will be permanantly deleted!',
+                    icon: 'warning',
+                    buttons: ["Cancel", "Delete"],
+                    
+                }).then(function(value) {
+                    if (value) {
+                        window.location.href = url;
+                    }
+                });
+            });
+        
+        </script>
         <script src="{{ asset('dist/js/app.js') }}"></script>
         <!-- END: JS Assets-->
         <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>

@@ -33,4 +33,20 @@ class RoleController extends Controller
        return  redirect()->back();
     }
 
+    public function deleteRole($id){
+        Role::find($id)->delete();
+
+        $name        = 'Delete role';
+        $company     = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
+
+        Historic::create([
+            'name'        => $name,
+            'company_id'  => $company,
+            'user_id'     => $userCreate,
+            //'user_create' => $id->name,
+        ]);
+        return redirect()->back();
+    }
+
 }

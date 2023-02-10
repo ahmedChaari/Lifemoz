@@ -62,14 +62,7 @@
                         <td class="text-center">{{ $category->created_at }}</td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <form method="POST" action="{{ route('category.delete', $category->id) }}">
-                                    @csrf
-                                    <input name="_method" type="hidden" value="DELETE">
-                                <a class="flex items-center mr-3" href=""> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                <a class="flex items-center text-danger" href="javascript:;" type="submit"
-                                 onclick="return confirm('{{ __('Are you sure you want to delete?') }}')"
-                                > <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
-                                </form>
+                            <a class="flex items-center text-danger delete-confirm" href="{{ route('category.delete', $category->id) }}"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
                     </tr>
