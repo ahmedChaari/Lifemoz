@@ -82,12 +82,11 @@ Route::get('/deleteDepot/{id}',   [DepotController::class, 'deleteDepot'])->name
 
 
 //history
-Route::get('/listHistories',          [HistoryController::class, 'listHistories'])   ->name('history.list')->middleware('auth');
+Route::get('/listHistories',       [HistoryController::class, 'listHistories'])   ->name('history.list')->middleware('auth');
 
 //role
-Route::get('/listRole',            [RoleController::class, 'listRole'])  ->name('role.list')->middleware('auth');
-Route::post('/createRole',         [RoleController::class, 'createRole']) ->name('role.create')->middleware('auth');
-Route::get('/deleteRole/{id}',[RoleController::class, 'deleteRole'])->name('role.delete')->middleware('auth');
+Route::get('/listRole',               [RoleController::class, 'listRole'])  ->name('role.list')->middleware('auth');
+Route::post('/createRole',           [RoleController::class, 'createRole']) ->name('role.create')->middleware('auth');
 
 //compnay
 Route::get('/company', function () { return view('company.create');})->name('company.create')->middleware('auth');;
