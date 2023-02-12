@@ -78,15 +78,7 @@
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3" href="{{ route('product.edit', $product->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                <form method="POST" action="{{ route('product.delete', $product->id) }}">
-                                    @csrf
-                                    <input name="_method" type="hidden" value="DELETE">
-                                <a class="flex items-center text-danger"
-                                    href="javascript:;" onclick="return confirm('{{ __('Are you sure you want to delete?') }}')"
-                                    type="submit">
-                                    <!--  data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal" -->
-                                <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
-                                </form>
+                                <a class="flex items-center text-danger delete-confirm" href="{{ route('product.delete', $product->id) }}"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
                     </tr>

@@ -37,23 +37,6 @@
                                 <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="input-form mt-3">
-                            <label for="validation-form-3" class="form-label w-full flex flex-col sm:flex-row"> Password <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, at least 6 characters</span> </label>
-                            <input id="validation-form-3" value="{{ Auth::user()->password }}"
-                            type="password" name="password" class="form-control" placeholder="secret" minlength="6" required>
-                            @error('password')
-                            <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
-                                <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <!--   conferm password -->
-                        <div class="input-form mt-3">
-                            <label for="validation-form-3" class="form-label w-full flex flex-col sm:flex-row"> Confirm Password
-                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, at least 6 characters</span> </label>
-                            <input id="password-confirm" type="password" class="intro-x login__input form-control py-3 px-4 block mt-4"
-                            placeholder="{{ __('Confirm Password') }}" name="password_confirmation" required autocomplete="new-password">
-                        </div>
                         <button type="submit" class="btn btn-primary mt-5">Register</button>
                     </form>
                     <!-- END: Validation Form -->

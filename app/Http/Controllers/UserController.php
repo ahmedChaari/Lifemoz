@@ -53,8 +53,6 @@ class UserController extends Controller
         $user->update([
             'name'       => $request->name,
             'email'      => $request->email,
-            'password'   => $request->password,
-            'password' => Hash::make($request['password']),
             ]);
             Historic::create([
                 'name'        => $name,
@@ -116,8 +114,6 @@ class UserController extends Controller
             'fonction'   => $request->fonction,
             'service_id' => $request->service_id,
             'role_id'    => $request->role_id,
-            'password'   => $request->password,
-            'password' => Hash::make($request['password']),
             'active' => $request->has('active'),
             ]);
             Historic::create([

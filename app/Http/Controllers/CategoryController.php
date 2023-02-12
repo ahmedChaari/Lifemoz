@@ -33,9 +33,36 @@ class CategoryController extends Controller
 
     }
 
+    public function editCategory(Category $category){
+        $company = Auth::user()->company_id;
+
+        return $category;
+    }
+
+    public function updateCategory(Request $request,Category $category){
+        $company = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
+        $name = 'update category';
+        $category->update([
+            'name'        => $request->nameCategory,
+            'description' => $request->description,
+        ]);
+        Historic::create([
+            'name'        => $name,
+            'company_id'  => $company,
+            'user_id'     => $userCreate,
+        ]);
+       // return  redirect(route('Product.list'));
+       return  redirect()->back() ;
+
+    }
+
+
+
     public function listCategory(){
         $company = Auth::user()->company_id;
         $categories = Category::where('company_id', $company)
+                            ->orWhere('company_id', null)
                         ->paginate(10);
         return view('category.list' , compact('categories'));
     }

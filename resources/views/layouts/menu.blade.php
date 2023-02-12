@@ -24,7 +24,7 @@ License: You must have a valid license purchased only from themeforest(the above
          <title>{{ config('app.name', 'Calander') }}</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}"/>
-        
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <style>
     .swal-button--confirm{
@@ -289,7 +289,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                         <ul class="">
                             <li>
-                                <a href="{{ route('company.create') }}" class="side-menu">
+                                <a href="{{ route('company.edit') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Paramétrage général </div>
                                 </a>
@@ -404,7 +404,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
         @yield('scripts')
         <!-- BEGIN: JS Assets-->
-        
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 
         <script type="text/javascript">
@@ -416,14 +416,14 @@ License: You must have a valid license purchased only from themeforest(the above
                     text: 'This record and it`s details will be permanantly deleted!',
                     icon: 'warning',
                     buttons: ["Cancel", "Delete"],
-                    
+
                 }).then(function(value) {
                     if (value) {
                         window.location.href = url;
                     }
                 });
             });
-        
+
         </script>
         <script src="{{ asset('dist/js/app.js') }}"></script>
         <!-- END: JS Assets-->

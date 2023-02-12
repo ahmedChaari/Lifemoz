@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepotController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProductController;
@@ -60,12 +61,14 @@ Route::get('/create',                 [ProductController::class, 'create'])     
 Route::post('/createProduct',         [ProductController::class, 'createProduct']) ->name('product.create')->middleware('auth');
 Route::put('/updateProduct/{product}',[ProductController::class, 'updateProduct']) ->name('product.update')->middleware('auth');
 Route::get('/editProduct/{product}',  [ProductController::class, 'editProduct'])   ->name('product.edit')->middleware('auth');
-Route::delete('/deleteProduct/{id}',  [ProductController::class, 'deleteProduct'])->name('product.delete')->middleware('auth');
+Route::get('/deleteProduct/{id}',  [ProductController::class, 'deleteProduct'])->name('product.delete')->middleware('auth');
 
-
+//category
 Route::post('/createCategory',        [CategoryController::class, 'createCategory'])->name('category.create')->middleware('auth');
 Route::get('/listCategory',           [CategoryController::class, 'listCategory'])  ->name('category.list')->middleware('auth');
-Route::get('/deleteCategory/{id}', [CategoryController::class, 'deleteCategory'])->name('category.delete')->middleware('auth');
+Route::get('/deleteCategory/{id}',    [CategoryController::class, 'deleteCategory'])->name('category.delete')->middleware('auth');
+Route::get('/updateCategory/{product}',    [CategoryController::class, 'updateCategory'])->name('category.update')->middleware('auth');
+Route::get('/editCategory/{category}',  [CategoryController::class, 'editCategory'])   ->name('category.edit')->middleware('auth');
 
 
 //unity
@@ -87,9 +90,14 @@ Route::get('/listHistories',       [HistoryController::class, 'listHistories']) 
 //role
 Route::get('/listRole',               [RoleController::class, 'listRole'])  ->name('role.list')->middleware('auth');
 Route::post('/createRole',           [RoleController::class, 'createRole']) ->name('role.create')->middleware('auth');
+Route::get('/deleteRole/{id}',           [RoleController::class, 'deleteRole']) ->name('role.delete')->middleware('auth');
 
 //compnay
-Route::get('/company', function () { return view('company.create');})->name('company.create')->middleware('auth');;
+Route::get('/company', function () { return view('company.create');})->name('company.edit')->middleware('auth');
+
+Route::post('/createCompany',           [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');
+Route::put('/UpdateCompany',           [CompanyController::class, 'UpdateCompany']) ->name('company.update')->middleware('auth');
+
 
 
 

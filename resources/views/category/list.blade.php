@@ -62,6 +62,7 @@
                         <td class="text-center">{{ $category->created_at }}</td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
+                                <a class="flex items-center mr-3" href="{{ route('category.edit', $category->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
                             <a class="flex items-center text-danger delete-confirm" href="{{ route('category.delete', $category->id) }}"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
