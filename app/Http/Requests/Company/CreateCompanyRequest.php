@@ -24,9 +24,27 @@ class CreateCompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        =>  'required|string|min:3|max:255|unique:companies',
-            'activite'        =>  'required',
-            'date_creation'        =>  'required|date',
+            'name'          => 'required|string|min:3|max:255|unique:companies',
+            'activite'      => 'required',
+            'date_creation' => 'required|date',
+            'gerant'        => 'required',
+            'ville'         => 'required',
+            'paye'          => 'required',
+            'adresse'       => 'required',
+            'email'         => 'required',
+            'tel'           => 'required',
+            'tel_mobile'    => 'nullable',
+            'fax'           => 'nullable',
+            'ICE'           => 'nullable',
+            'registre_commerce'=> 'nullable',
+            'patent'        => 'nullable',
+            'web'           => 'required',
         ];
     }
 }
+
+
+
+
+
+

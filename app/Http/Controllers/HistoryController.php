@@ -13,4 +13,11 @@ class HistoryController extends Controller
         return view('history.list' , compact('histories'));
 
     }
+
+    public function show($id){
+        $user = Historic::find($id)
+                ->with('users')
+                ->first();
+        return view('history.show', compact('history', 'users'));
+    }
 }

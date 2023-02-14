@@ -24,7 +24,7 @@ License: You must have a valid license purchased only from themeforest(the above
          <title>{{ config('app.name', 'Calander') }}</title>
         <!-- BEGIN: CSS Assets-->
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}"/>
-
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <style>
     .swal-button--confirm{
@@ -428,6 +428,11 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="{{ asset('dist/js/app.js') }}"></script>
         <!-- END: JS Assets-->
         <script src="{{ asset('dist/js/ckeditor-classic.js') }}"></script>
+        <!-- Latest compiled and minified JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script>
 
     </body>
 </html>

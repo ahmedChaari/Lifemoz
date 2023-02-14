@@ -77,11 +77,72 @@
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
+                                <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"
+                                data-tw-toggle="modal" data-tw-target="#overlapping-modal-preview_{{ $product->id }}"  >
+                                <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
                                 <a class="flex items-center mr-3" href="{{ route('product.edit', $product->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
                                 <a class="flex items-center text-danger delete-confirm" href="{{ route('product.delete', $product->id) }}"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
                     </tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!-- BEGIN: Modal Content -->
+   <div id="overlapping-modal-preview_{{ $product->id }}" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- BEGIN: Modal Header -->
+            <div class="modal-header">
+                <h2 class="font-medium text-base mr-auto">La Fiche Du Produit</h2>
+            </div> <!-- END: Modal Header -->
+            <!-- BEGIN: Modal Body -->
+            <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-1" class="form-label">Nom Du Produit</label></div>
+                <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">  {{ $product->name }}</div>
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-2" class="form-label">CATEGORY / UNITY</label></div>
+                <div class="col-span-12 sm:col-span-6">
+                    <div class="font-medium whitespace-nowrap">{{ $product->category->name }}</div>
+                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->unity->name }}</div>
+                </div>
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-3" class="form-label">PRIX VENTE / PRIX ACHAT </label></div>
+                <div class="col-span-12 sm:col-span-6">
+                    <div class="font-medium whitespace-nowrap">{{ $product->vente }}</div>
+                    <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->achat }}</div>
+                </div>
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-4" class="form-label">DEPOT</label></div>
+                <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">{{ $product->depot->name }}</div>
+
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-4" class="form-label">QUANTITE</label></div>
+                <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">{{ $product->quantite }}</div>
+            </div> <!-- END: Modal Body -->
+            <!-- BEGIN: Modal Footer -->
+            <div class="modal-footer"> <button type="button" data-tw-dismiss="modal" class="btn btn-outline-danger w-20 mr-1">Cancel</button></div> <!-- END: Modal Footer -->
+        </div>
+    </div>
+</div> <!-- END: Modal Content -->
+
+
+
+
+
+
+
+
+
+
+
                     @endforeach
                     @else
                     <h3 class="text-center mt-5 mb-5">Pas encore des users</h3>

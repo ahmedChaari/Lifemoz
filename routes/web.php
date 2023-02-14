@@ -86,6 +86,7 @@ Route::get('/deleteDepot/{id}',   [DepotController::class, 'deleteDepot'])->name
 
 //history
 Route::get('/listHistories',       [HistoryController::class, 'listHistories'])   ->name('history.list')->middleware('auth');
+Route::get('/show/{id}',       [HistoryController::class, 'show'])   ->name('history.show')->middleware('auth');
 
 //role
 Route::get('/listRole',               [RoleController::class, 'listRole'])  ->name('role.list')->middleware('auth');
@@ -96,7 +97,7 @@ Route::get('/deleteRole/{id}',           [RoleController::class, 'deleteRole']) 
 Route::get('/company', function () { return view('company.create');})->name('company.edit')->middleware('auth');
 
 Route::post('/createCompany',           [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');
-Route::put('/UpdateCompany',           [CompanyController::class, 'UpdateCompany']) ->name('company.update')->middleware('auth');
+Route::put('/UpdateCompany/{company}',           [CompanyController::class, 'UpdateCompany']) ->name('company.update')->middleware('auth');
 
 
 

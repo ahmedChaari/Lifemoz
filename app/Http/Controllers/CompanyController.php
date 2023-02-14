@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Company\Create\companyRequest;
 use App\Http\Requests\Company\CreateCompanyRequest;
+use App\Http\Requests\Company\Update2CompanyRequest;
 use App\Models\Company;
 use App\Models\Historic;
 use App\Models\User;
@@ -20,31 +21,45 @@ class CompanyController extends Controller
             'name'          => $request->name,
             'activite'      => $request->activite,
             'date_creation' => $request->date_creation,
+            'gerant'        => $request->gerant,
+            'email'         => $request->email,
+            'ville'         => $request->ville,
+            'pays'          => $request->pays,
+            'adresse'       => $request->adresse,
+            'tel'           => $request->tel,
+            'tel_mobile'    => $request->tel_mobile,
+            'fax'           => $request->fax,
+            'registre_commerce'=> $request->registre_commerce,
+            'fiscale'       => $request->fiscale,
+            'ICE'           => $request->ICE,
+            'patent'        => $request->patent,
+            'web'           => $request->web,
+            //'logo'        => $request->logo,
         ]);
-
 
         $user = User::find($user)->first();
         $user->update([
             'company_id'     => $company->id,
         ]);
-
             Historic::create([
                 'name'        => $name,
                 'company_id'  => $company->id,
                 'user_id'     => $user->id,
             ]);
-        return  view('company.create2')->with('company' ,$company);
+       // return  view('company.create2');
+        return  redirect(route('user.list'));
     }
     //update company
-    public function updateCompany(Request $request,Company $company){
+    public function updateCompany(Update2CompanyRequest $request,Company $company){
 
         $user = Auth::user()->id;
         $name = 'Update company';
 
         $company->update([
-            'name'     => $request->gerant,
-            'adresse'  => $request->adresse,
-            'email'    => $request->email,
+            'gerant'     => $request->gerant,
+            'adresse'    => $request->adresse,
+            'ville'      => $request->ville,
+            'paye'       => $request->paye,
         ]);
 
     Historic::create([
@@ -52,6 +67,6 @@ class CompanyController extends Controller
         'company_id'  => $company->id,
         'user_id'     => $user,
     ]);
-    return  redirect(view('company.component.create2'));
+    return  view('company.create3');
     }
 }

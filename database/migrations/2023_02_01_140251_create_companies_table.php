@@ -19,6 +19,8 @@ class CreateCompaniesTable extends Migration
             $table->string('activite');
             $table->date('date_creation');
             $table->string('gerant')->nullable();
+            $table->string('ville')->nullable();
+            $table->text('paye')->nullable();
             $table->text('adresse')->nullable();
             $table->string('email')->nullable();
             $table->integer('tel')->nullable();

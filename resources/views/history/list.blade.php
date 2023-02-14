@@ -1,6 +1,11 @@
 @extends('layouts.menu')
 @section('content')
 
+
+
+
+
+
 <!-- BEGIN: Content -->
    <div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
@@ -40,11 +45,54 @@
                         </td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                <a class="flex items-center text-primary whitespace-nowrap mr-5" href="javascript:;"
+                                data-tw-toggle="modal" data-tw-target="#overlapping-modal-preview_{{ $history->id }}"  >
+                                <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> View Details </a>
+                                <!-- BEGIN: Modal Toggle -->
                                 <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
                     </tr>
+
+
+
+
+
+
+   <!-- BEGIN: Modal Content -->
+ <div id="overlapping-modal-preview_{{ $history->id }}" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- BEGIN: Modal Header -->
+            <div class="modal-header">
+                <h2 class="font-medium text-base mr-auto">La Fiche D'historique D'événement</h2>
+            </div> <!-- END: Modal Header -->
+            <!-- BEGIN: Modal Body -->
+            <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-1" class="form-label">Date Evenement</label></div>
+                <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">  {{ $history->created_at }}</div>
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-2" class="form-label">Name d'Evenement</label></div>
+                <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">  {{ $history->name }}</div>
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-3" class="form-label">Modification de</label></div>
+                <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">  {{ $history->user->name }}</div>
+                <div class="col-span-12 sm:col-span-6"> <label for="modal-form-4" class="form-label">Le Role</label></div>
+                <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">  {{ $history->user->role->name }}</div>
+            </div> <!-- END: Modal Body -->
+            <!-- BEGIN: Modal Footer -->
+            <div class="modal-footer"> <button type="button" data-tw-dismiss="modal" class="btn btn-outline-danger w-20 mr-1">Cancel</button></div> <!-- END: Modal Footer -->
+        </div>
+    </div>
+</div> <!-- END: Modal Content -->
+
+
+
+
+
+
+
+
+
+
                     @endforeach
                     @else
                     <h3 class="text-center mt-5 mb-5">Pas encore des users</h3>
@@ -57,5 +105,16 @@
     </div>
    </div>
 <!-- END: Content -->
+
+
+
+@endsection
+
+@section('scripts')
+
+
+
+
+
 
 @endsection
