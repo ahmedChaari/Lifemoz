@@ -2,7 +2,7 @@
 @section('content')
 
  <!-- BEGIN: Content -->
- <div class="content">
+ <div class="content" style="padding-top: 0rem;">
     <h2 class="intro-y text-lg font-medium mt-10">
         LISTE DES UTILISATEURS
     </h2>
@@ -71,12 +71,8 @@
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center mr-3" href="{{ route('user.edit', $user->id) }}"> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                <form method="POST" action="{{ route('user.delete', $user->id) }}">
-                                    @csrf
-                                    <input name="_method" type="hidden" value="DELETE">
-                                <a class="flex items-center text-danger" href="javascript:;" type="submit"
-                                onclick="return confirm('{{ __('Are you sure you want to delete?') }}')"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
-                                </form>
+                                <a class="flex items-center text-danger delete-confirm" href="{{ route('user.delete', $user->id) }}"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
+
                             </div>
                         </td>
                     </tr>

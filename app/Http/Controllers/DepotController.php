@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Depot\createDepotRequest;
 use App\Models\Company;
 use App\Models\Depot;
 use App\Models\Historic;
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class DepotController extends Controller
 {
 
-    public function createDepot(Request $request){
+    public function createDepot(createDepotRequest $request){
         $company = Auth::user()->company_id;
         $userCreate  = Auth::user()->id;
         $name = 'create depot';
@@ -37,21 +38,29 @@ class DepotController extends Controller
         return view('depot.list' , compact('depots'));
     }
 
-    public function updateDepot(Request $request, Depot $depot){
+    public function updateDepot(createDepotRequest $request,Depot $depot){
 
         $company = Auth::user()->company_id;
         $userCreate  = Auth::user()->id;
-        $name = 'update depot';
         $depot->update([
             'name'        => $request->name,
+        ]);
+        if (isset($depot)) {
+            
+            $name = 'update depot';
+    
+                Historic::create([
+                    'name'        => $name,
+                    'company_id'  => $company,
+                    'user_id'     => $userCreate,
+                ]);
+                return  redirect()->back();
+        }else {
+            return ([
+                'errors' => $request->errors()
             ]);
-
-            Historic::create([
-                'name'        => $name,
-                'company_id'  => $company,
-                'user_id'     => $userCreate,
-            ]);
-        return  redirect(route('depot.list'));
+        }
+        
     }
 
 

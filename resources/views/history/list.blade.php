@@ -1,13 +1,8 @@
 @extends('layouts.menu')
 @section('content')
 
-
-
-
-
-
 <!-- BEGIN: Content -->
-   <div class="content">
+<div class="content" style="padding-top: 0rem;">
     <h2 class="intro-y text-lg font-medium mt-10">
         Mot historique
     </h2>
@@ -82,7 +77,8 @@
             <div class="modal-footer"> <button type="button" data-tw-dismiss="modal" class="btn btn-outline-danger w-20 mr-1">Cancel</button></div> <!-- END: Modal Footer -->
         </div>
     </div>
-</div> <!-- END: Modal Content -->
+</div>
+<!-- END: Modal Content -->
 
 
 

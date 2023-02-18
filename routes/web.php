@@ -78,7 +78,7 @@ Route::get('/deleteUnity/{id}',[UnityController::class, 'deleteUnity'])->name('u
 
 //depot
 Route::post('/createDepot',       [DepotController::class, 'createDepot'])->name('depot.create')->middleware('auth');
-Route::put('/updateDepot',        [DepotController::class, 'updateDepot'])->name('depot.update')->middleware('auth');
+Route::put('/updateDepot/{depot}',        [DepotController::class, 'updateDepot'])->name('depot.update')->middleware('auth');
 Route::get('/editDepot/{depot}',  [DepotController::class, 'editDepot']) ->name('depot.edit')->middleware('auth');
 Route::get('/listDepot',          [DepotController::class, 'listDepot'])  ->name('depot.list')->middleware('auth');
 Route::get('/deleteDepot/{id}',   [DepotController::class, 'deleteDepot'])->name('depot.delete')->middleware('auth');
