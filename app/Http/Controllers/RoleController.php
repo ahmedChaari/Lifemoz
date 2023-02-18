@@ -49,4 +49,21 @@ class RoleController extends Controller
         return redirect()->back();
     }
 
+    public function updateRole(Request $request,Role $role){
+        $company = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
+        $name = 'update role';
+        $role->update([
+            'name'        => $request->name,
+        ]);
+        Historic::create([
+            'name'        => $name,
+            'company_id'  => $company,
+            'user_id'     => $userCreate,
+        ]);
+       // return  redirect(route('Product.list'));
+       return  redirect()->back() ;
+
+    }
+
 }

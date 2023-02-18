@@ -64,34 +64,37 @@ Route::get('/editProduct/{product}',  [ProductController::class, 'editProduct'])
 Route::get('/deleteProduct/{id}',  [ProductController::class, 'deleteProduct'])->name('product.delete')->middleware('auth');
 
 //category
-Route::post('/createCategory',        [CategoryController::class, 'createCategory'])->name('category.create')->middleware('auth');
-Route::get('/listCategory',           [CategoryController::class, 'listCategory'])  ->name('category.list')->middleware('auth');
-Route::get('/deleteCategory/{id}',    [CategoryController::class, 'deleteCategory'])->name('category.delete')->middleware('auth');
-Route::get('/updateCategory/{product}',    [CategoryController::class, 'updateCategory'])->name('category.update')->middleware('auth');
-Route::get('/editCategory/{category}',  [CategoryController::class, 'editCategory'])   ->name('category.edit')->middleware('auth');
+Route::post('/createCategory',         [CategoryController::class, 'createCategory'])->name('category.create')->middleware('auth');
+Route::get('/listCategory',            [CategoryController::class, 'listCategory'])  ->name('category.list')->middleware('auth');
+Route::get('/deleteCategory/{id}',     [CategoryController::class, 'deleteCategory'])->name('category.delete')->middleware('auth');
+Route::put('/updateCategory/{category}',[CategoryController::class, 'updateCategory'])->name('category.update')->middleware('auth');
+Route::get('/editCategory/{category}', [CategoryController::class, 'editCategory'])   ->name('category.edit')->middleware('auth');
 
 
 //unity
-Route::post('/createUnity',  [UnityController::class, 'createUnity'])->name('unity.create')->middleware('auth');
-Route::get('/listUnity',     [UnityController::class, 'listUnity'])->name('unity.list')->middleware('auth');
-Route::get('/deleteUnity/{id}',[UnityController::class, 'deleteUnity'])->name('unity.delete')->middleware('auth');
+Route::post('/createUnity',       [UnityController::class, 'createUnity'])->name('unity.create')->middleware('auth');
+Route::get('/listUnity',          [UnityController::class, 'listUnity'])->name('unity.list')->middleware('auth');
+Route::get('/deleteUnity/{id}',   [UnityController::class, 'deleteUnity'])->name('unity.delete')->middleware('auth');
+Route::put('/updateUnity/{unity}',[UnityController::class, 'updateUnity'])->name('unity.update')->middleware('auth');
 
 //depot
 Route::post('/createDepot',       [DepotController::class, 'createDepot'])->name('depot.create')->middleware('auth');
-Route::put('/updateDepot/{depot}',        [DepotController::class, 'updateDepot'])->name('depot.update')->middleware('auth');
+Route::put('/updateDepot/{depot}',[DepotController::class, 'updateDepot'])->name('depot.update')->middleware('auth');
 Route::get('/editDepot/{depot}',  [DepotController::class, 'editDepot']) ->name('depot.edit')->middleware('auth');
 Route::get('/listDepot',          [DepotController::class, 'listDepot'])  ->name('depot.list')->middleware('auth');
 Route::get('/deleteDepot/{id}',   [DepotController::class, 'deleteDepot'])->name('depot.delete')->middleware('auth');
 
 
 //history
-Route::get('/listHistories',       [HistoryController::class, 'listHistories'])   ->name('history.list')->middleware('auth');
-Route::get('/show/{id}',       [HistoryController::class, 'show'])   ->name('history.show')->middleware('auth');
+Route::get('/listHistories',      [HistoryController::class, 'listHistories'])   ->name('history.list')->middleware('auth');
+Route::get('/show/{id}',          [HistoryController::class, 'show'])   ->name('history.show')->middleware('auth');
 
 //role
-Route::get('/listRole',               [RoleController::class, 'listRole'])  ->name('role.list')->middleware('auth');
-Route::post('/createRole',           [RoleController::class, 'createRole']) ->name('role.create')->middleware('auth');
-Route::get('/deleteRole/{id}',           [RoleController::class, 'deleteRole']) ->name('role.delete')->middleware('auth');
+Route::get('/listRole',            [RoleController::class, 'listRole'])  ->name('role.list')->middleware('auth');
+Route::post('/createRole',         [RoleController::class, 'createRole']) ->name('role.create')->middleware('auth');
+Route::get('/deleteRole/{id}',     [RoleController::class, 'deleteRole']) ->name('role.delete')->middleware('auth');
+Route::put('/updateRole/{role}',   [RoleController::class, 'updateRole']) ->name('role.update')->middleware('auth');
+
 
 //compnay
 Route::get('/company', function () { return view('company.create');})->name('company.edit')->middleware('auth');

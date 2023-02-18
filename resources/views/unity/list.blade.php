@@ -60,12 +60,61 @@
                         <td class="text-center">{{ $unity->created_at }}</td>
                         <td class="table-report__action w-56">
                             <div class="flex justify-center items-center">
-                                <a class="flex items-center mr-3" href=""> <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit </a>
-                                
+                                <a href="javascript:;" data-tw-toggle="modal"
+                                        data-tw-target="#overlapping-modal-preview_{{ $unity->id }}"
+                                        class="flex items-center mr-3">
+                                        <i data-lucide="check-square" class="w-4 h-4 mr-1"></i>Edit</a>
+
                                 <a class="flex items-center text-danger delete-confirm" href="{{ route('unity.delete', $unity->id) }}"> <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete </a>
                             </div>
                         </td>
                     </tr>
+
+
+
+
+
+
+
+
+ <!-- BEGIN: Modal Content -->
+ <div id="overlapping-modal-preview_{{ $unity->id }}"  class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- BEGIN: Modal Header -->
+            <div class="modal-header">
+                <h2 class="font-medium text-base mr-auto"> Message</h2>
+            </div> <!-- END: Modal Header -->
+            <!-- BEGIN: Modal Body -->
+           <form method="POST" action="{{ route('unity.update' , $unity->id) }}"  >
+                   @csrf
+                       @method('PUT')
+               <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
+                   <div class="col-span-12 sm:col-span-12"> <label for="modal-form-1" class="form-label">Nom du depot</label> </div>
+                   <div class="col-span-12 sm:col-span-12">
+                       <input id="name" name="name" type="text" value="{{ $unity->name }}" class="form-control" ></div>
+                   @error('name')
+                       <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
+                       <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
+                   @enderror
+               </div>
+               <!-- END: Modal Body -->
+               <!-- BEGIN: Modal Footer -->
+               <div class="modal-footer">
+                   <button type="button" data-tw-dismiss="modal" class="btn btn-outline-danger w-20 mr-1">Cancel</button>
+                   <button type="submit" class="btn btn-outline-primary w-20">Update</button>
+               </div> <!-- END: Modal Footer -->
+           </form>
+
+           @if (count($errors) > 0)
+               $('#register').modal('show');
+           @endif
+
+        </div>
+    </div>
+</div> <!-- END: Modal Content -->
+
+
                     @endforeach
                     @else
                     <h3 class="text-center mt-5 mb-5">Pas encore des unites</h3>

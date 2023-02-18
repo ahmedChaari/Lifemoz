@@ -44,7 +44,7 @@ class CategoryController extends Controller
         $userCreate  = Auth::user()->id;
         $name = 'update category';
         $category->update([
-            'name'        => $request->nameCategory,
+            'name'        => $request->name,
             'description' => $request->description,
         ]);
         Historic::create([

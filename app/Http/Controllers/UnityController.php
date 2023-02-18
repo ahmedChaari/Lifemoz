@@ -52,4 +52,30 @@ class UnityController extends Controller
         ]);
         return redirect()->back();
     }
+
+
+    public function updateUnity(Request $request,Unity $unity){
+
+        $company = Auth::user()->company_id;
+        $userCreate  = Auth::user()->id;
+        $unity->update([
+            'name'        => $request->name,
+        ]);
+        if (isset($unity)) {
+
+            $name = 'update unity';
+
+                Historic::create([
+                    'name'        => $name,
+                    'company_id'  => $company,
+                    'user_id'     => $userCreate,
+                ]);
+                return  redirect()->back();
+        }else {
+            return ([
+                'errors' => $request->errors()
+            ]);
+        }
+
+    }
 }

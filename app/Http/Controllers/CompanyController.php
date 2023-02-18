@@ -38,9 +38,9 @@ class CompanyController extends Controller
         ]);
 
         $user = User::find($user)->first();
-        $user->update([
-            'company_id'     => $company->id,
-        ]);
+       // $user->update([
+         //   'company_id'     => $company->id,
+      //  ]);
             Historic::create([
                 'name'        => $name,
                 'company_id'  => $company->id,
