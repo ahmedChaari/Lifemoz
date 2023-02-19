@@ -36,6 +36,7 @@ class CompanyController extends Controller
             'web'           => $request->web,
             //'logo'        => $request->logo,
         ]);
+        dd($company);
 
         $user = User::find($user)->first();
        // $user->update([

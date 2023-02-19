@@ -177,7 +177,7 @@
             </div>
             <div class="mt-3" style="overflow:auto; float:right;">
                 <button class="btn btn-secondary w-24" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button class="btn btn-primary w-24 ml-2" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" onclick="nextPrev(1)">Next</button>
 
             </div>
         </div>
