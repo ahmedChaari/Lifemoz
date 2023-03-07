@@ -27,7 +27,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- Latest compiled and minified CSS -->
         <!-- BEGIN: CSS Assets-->
 
-        <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}" />
+
+        <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
@@ -36,12 +39,15 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="block xl:grid grid-cols-2 gap-4">
                 <!-- BEGIN: Login Info -->
                 <div class="hidden xl:flex flex-col min-h-screen">
-                    <a href="" class="-intro-x flex items-center pt-5">
-                        <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
-                        <span class="text-white text-lg ml-3"> Enigma </span>
-                    </a>
+                    <div>
+
+                        <a href="" class="-intro-x flex items-center pt-5">
+                            <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
+                            <span class="text-white text-lg ml-3"> Enigma </span>
+                        </a>
+                    </div>
                     <div class="my-auto">
-                        <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/AYCAR-White.png') }}">
+                        <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/logo.png') }}">
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                             Connectez-vous à votre compte.
                         </div>
@@ -49,16 +55,21 @@ License: You must have a valid license purchased only from themeforest(the above
                            matériels en un seul endroit</div>
                     </div>
                 </div>
-                <!-- END: Login Info -->
-                <!-- BEGIN: Login Form -->
-                @yield('content')
-                <!-- END: Login Form -->
+
+
+                    <!-- END: Login Info -->
+                    <!-- BEGIN: Login Form -->
+                    @yield('content')
+                    <!-- END: Login Form -->
+
             </div>
         </div>
 
 
         <!-- BEGIN: JS Assets-->
         <script src="{{ asset('dist/js/app.js') }}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
         <!-- END: JS Assets-->
     </body>
 </html>

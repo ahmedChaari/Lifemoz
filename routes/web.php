@@ -23,6 +23,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+// step of create company
+
+Route::get('/company/step1', [CompanyController::class, 'step1'])->name('company.step1');
+
+
+Route::get('company', function () {
+    return view('company.create');
+});
+
+
+
+
 Route::get('/', function () {
     return view('auth.login');
 });

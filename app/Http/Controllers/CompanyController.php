@@ -70,4 +70,10 @@ class CompanyController extends Controller
     ]);
     return  view('company.create3');
     }
+
+
+    public function step1(){
+
+        return view('company.step1');
+    }
 }
