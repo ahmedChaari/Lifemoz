@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 // step of create company
 
-Route::get('/company/step1', [CompanyController::class, 'step1'])->name('company.step1');
+// Route::get('/company/step1', [CompanyController::class, 'step1'])->name('company.step1');
 
 
 Route::get('company', function () {
@@ -112,9 +112,10 @@ Route::put('/updateRole/{role}',   [RoleController::class, 'updateRole']) ->name
 //compnay
 Route::get('/company', function () { return view('company.create');})->name('company.edit')->middleware('auth');
 
-Route::post('/createCompany',           [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');
+// Route::post('/createCompany',           [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');
 Route::put('/UpdateCompany/{company}',           [CompanyController::class, 'UpdateCompany']) ->name('company.update')->middleware('auth');
 
 
+Route::get('/create',             [CompanyController::class, 'create'])->name('company.create');
 
 

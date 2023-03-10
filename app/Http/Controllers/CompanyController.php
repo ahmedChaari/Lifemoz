@@ -76,4 +76,14 @@ class CompanyController extends Controller
 
         return view('company.step1');
     }
+
+
+
+
+
+
+    public function create()
+    {
+        return view('company.create');
+    }
 }

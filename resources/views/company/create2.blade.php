@@ -1,4 +1,39 @@
-<div class="intro-y box py-10 sm:py-20 mt-5">
+@extends('layouts.app')
+@section('content')
+<!-- BEGIN: Content -->
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Mark input boxes that gets an error on validation: */
+    input.invalid {
+      background-color: #ffdddd;
+    }
+
+    /* Hide all steps by default: */
+    .tab {
+      display: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* Make circles that indicate the steps of the form: */
+    .step {
+      display: inline-block;
+      opacity: 0.5;
+    }
+
+    /* Mark the steps that are finished and valid: */
+    .step.finish {
+        background-color: #15a2d7e0;
+        color: white;
+    }
+    </style>
+
+    <div class="intro-y box py-10 sm:py-20 mt-5">
        <!-- Circles which indicates the steps of the form: -->
         <div class="relative before:hidden before:lg:block before:absolute before:w-[69%] before:h-[3px] before:top-0 before:bottom-0 before:mt-4 before:bg-slate-100 before:dark:bg-darkmode-400 flex flex-col lg:flex-row justify-center px-5 sm:px-20">
             <div class="intro-x lg:text-center flex items-center lg:block flex-1 z-10">
@@ -22,19 +57,19 @@
                 <div class="lg:w-32 font-medium text-base lg:mt-3 ml-3 lg:mx-auto" >Finalisez Votre Compte</div>
             </div>
         </div>
-
-      
+<form id="regForm" action="{{ route('company.create')}}" method="POST">
+    @csrf
+    @if(isset($company))
+        @method('PUT')
+    @endif
         <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-slate-200/60 dark:border-darkmode-400">
         <!-- One "tab" for each step in the form: -->
-       
-@if ($step <= 1)
-    <form wire:submit.prevent="step1" >
             <div class="tab">
                 <div class="font-medium text-base">Créer un Nouveau Compte</div>
                 <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-1" class="form-label">Nom de société</label>
-                        <input id="input-wizard-1" type="text" class="form-control" wire:model="name" placeholder="Nom de société">
+                        <input id="input-wizard-1" type="text" class="form-control" name="name" placeholder="Nom de société">
                         @error('name')
                         <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
                             <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
@@ -42,32 +77,16 @@
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-2" class="form-label">Secteur d'activité</label>
-                        <input id="input-wizard-2" type="text" class="form-control" wire:model="activite" 
+                        <input id="input-wizard-2" type="text" class="form-control"
                         name="activite" placeholder="Secteur d'activité">
-                        @error('activite')
-                        <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
-                            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
-                        @enderror
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-6">
                         <label for="input-wizard-3" class="form-label">Date du Création</label>
-                        <input type="date" id="input-wizard-3" class="form-control" wire:model="date_creation" 
+                        <input type="date" id="input-wizard-3" class="form-control"
                         name="date_creation">
-                        @error('date_creation')
-                        <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
-                            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
-                        @enderror
                     </div>
-                    
-                </div>
-                <div class="mt-3" style="overflow:auto; float:right;">
-                        <!-- <button class="btn btn-secondary w-24" type="button" id="prevBtn" >Previous</button> -->
-                    <button class="btn btn-primary w-24 ml-2" type="submit"  >Continuer</button>
                 </div>
             </div>
-        </form>
-        @elseif ($step <= 2)
-        <form wire:submit.prevent="step2" >
             <div class="tab">
                 <div class="font-medium text-base">Configurez Votre Profil</div>
                 <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
@@ -107,16 +126,8 @@
                         <textarea name="" id="input-wizard-4" class="form-control" cols="30" name="adresse"
                         placeholder="Rue 58 BD N°12" rows="10"></textarea>
                     </div>
-                    
                 </div>
-                <div class="mt-3" style="overflow:auto; float:right;">
-                        <button class="btn btn-secondary w-24" type="button" wire:click="stepBack" wire:loading.attr="disabled" >Previous</button>
-                        <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" >Continuer</button>
-                    </div>
             </div>
-        </form>
-            @elseif ($step <= 3)
-        <form wire:submit.prevent="step3" >
             <div class="tab">
                 <div class="font-medium text-base">Configurez les détails de votre Entreprise</div>
                 <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
@@ -132,15 +143,8 @@
                         <label for="input-wizard-3" class="form-label">Fax</label>
                         <input id="input-wizard-3" type="text" class="form-control" name="fax" placeholder="0 XX XX XX XX">
                     </div>
-                    <div class="mt-3" style="overflow:auto; float:right;">
-                        <button class="btn btn-secondary w-24" type="button" wire:click="stepBack" wire:loading.attr="disabled" >Previous</button>
-                        <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" >Continuer</button>
-                    </div>
                 </div>
             </div>
-        </form> 
-            @elseif ($step <= 4)
-        <form wire:submit.prevent="step4" >
             <div class="tab">
                 <div class="font-medium text-base">Configurer le Compte</div>
                 <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
@@ -160,15 +164,8 @@
                         <label for="input-wizard-4" class="form-label">Patent</label>
                         <input id="input-wizard-4" type="text" class="form-control" name="patent" placeholder="">
                     </div>
-                    <div class="mt-3" style="overflow:auto; float:right;">
-                        <button class="btn btn-secondary w-24" type="button" wire:click="stepBack" wire:loading.attr="disabled" >Previous</button>
-                        <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" >Continuer</button>
-                    </div>
                 </div>
             </div>
-        </form>
-        @else($step <= 5)
-        <form wire:submit.prevent="step5" >
             <div class="tab">
                 <div class="font-medium text-base">Finalisez Votre Compte</div>
                 <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
@@ -179,14 +176,90 @@
                 </div>
             </div>
             <div class="mt-3" style="overflow:auto; float:right;">
-            <div class="mt-3" style="overflow:auto; float:right;">
-                <button class="btn btn-secondary w-24" type="button" wire:click="stepBack" wire:loading.attr="disabled" >Previous</button>
-                <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" >Continuer</button>
+                <button class="btn btn-secondary w-24" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" onclick="nextPrev(1)">Next</button>
+
             </div>
-            </div>
-        </form>
-        @endif
         </div>
     </div>
-
+</form>
 <!-- END: Content -->
+@endsection
+
+@section('scripts')
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+      // This function will display the specified tab of the form...
+      var x = document.getElementsByClassName("tab");
+      x[n].style.display = "block";
+      //... and fix the Previous/Next buttons:
+      if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline";
+      }
+      if (n == (x.length - 1)) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+        //btn.setAttribute('type', 'submit');
+      } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+      }
+      //... and run a function that will display the correct step indicator:
+      fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+      // This function will figure out which tab to display
+      var x = document.getElementsByClassName("tab");
+      // Exit the function if any field in the current tab is invalid:
+      if (n == 1 && !validateForm()) return false;
+      // Hide the current tab:
+      x[currentTab].style.display = "none";
+      // Increase or decrease the current tab by 1:
+      currentTab = currentTab + n;
+      // if you have reached the end of the form...
+      if (currentTab >= x.length) {
+        // ... the form gets submitted:
+        document.getElementById("regForm").submit();
+        return false;
+      }
+      // Otherwise, display the correct tab:
+      showTab(currentTab);
+    }
+
+    function validateForm() {
+      // This function deals with validation of the form fields
+      var x, y, i, valid = true;
+      x = document.getElementsByClassName("tab");
+      y = x[currentTab].getElementsByTagName("input");
+      // A loop that checks every input field in the current tab:
+      for (i = 0; i < y.length; i++) {
+        // If a field is empty...
+        if (y[i].value == "") {
+          // add an "invalid" class to the field:
+          y[i].className += " invalid";
+          // and set the current valid status to false
+          valid = false;
+        }
+      }
+      // If the valid status is true, mark the step as finished and valid:
+      if (valid) {
+        document.getElementsByClassName("step")[currentTab].className += " finish";
+      }
+      return valid; // return the valid status
+    }
+
+    function fixStepIndicator(n) {
+      // This function removes the "active" class of all steps...
+      var i, x = document.getElementsByClassName("step");
+      for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace(" active", "");
+      }
+      //... and adds the "active" class on the current step:
+      x[n].className += " active";
+    }
+    </script>
+@endsection
