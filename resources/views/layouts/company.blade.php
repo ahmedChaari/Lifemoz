@@ -12,6 +12,17 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
+
+
+
+        @livewireStyles
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <link href="{{ asset('css/company.css') }}" rel="stylesheet" id="bootstrap-css">
+
+
+
         <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Enigma admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
@@ -30,26 +41,26 @@ License: You must have a valid license purchased only from themeforest(the above
 
         <link rel="stylesheet" href="{{ asset('dist/css/app.css') }}"/>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- END: CSS Assets-->
     </head>
     <!-- END: Head -->
     <body class="login">
         <div class="container sm:px-10">
-           
+
                 <!-- BEGIN: Login Info -->
-            
+
 
 
                     <!-- END: Login Info -->
                     <!-- BEGIN: Login Form -->
-                    @yield('content')
+                    <livewire:company />
                     <!-- END: Login Form -->
 
-            
+
         </div>
 
-
+        @livewireScripts
         <!-- BEGIN: JS Assets-->
         <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 

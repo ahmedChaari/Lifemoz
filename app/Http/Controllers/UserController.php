@@ -51,14 +51,14 @@ class UserController extends Controller
         $userCreate  = Auth::user()->id;
         $name = 'update mon profile';
         $user->update([
-            'name'       => $request->name,
+            'fullName'       => $request->fullName,
             'email'      => $request->email,
             ]);
             Historic::create([
                 'name'        => $name,
                 'company_id'  => $company,
                 'user_id'     => $userCreate,
-                'user_create' => $user->name,
+                'user_create' => $user->fullName,
             ]);
 
 
@@ -77,7 +77,7 @@ class UserController extends Controller
         $userCreate  = Auth::user()->id;
         $name = 'create user';
         $user = User::create([
-            'name'       => $request->name,
+            'fullName'       => $request->fullName,
             'email'      => $request->email,
             'tel'        => $request->tel,
             'fonction'   => $request->fonction,
@@ -91,7 +91,7 @@ class UserController extends Controller
             'name'        => $name,
             'company_id'  => $company,
             'user_id'     => $userCreate,
-            'user_create' => $user->name,
+            'user_create' => $user->fullName,
         ]);
 
 
@@ -108,7 +108,7 @@ class UserController extends Controller
         $company     = Auth::user()->company_id;
         $userCreate  = Auth::user()->id;
         $user->update([
-            'name'       => $request->name,
+            'fullName'       => $request->fullName,
             'email'      => $request->email,
             'tel'        => $request->tel,
             'fonction'   => $request->fonction,
@@ -120,7 +120,7 @@ class UserController extends Controller
                 'name'        => $name,
                 'company_id'  => $company,
                 'user_id'     => $userCreate,
-                'user_create' => $user->name,
+                'user_create' => $user->fullName,
             ]);
         return redirect(route('user.list'));
     }

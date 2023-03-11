@@ -12,7 +12,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
-        <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
+        <link href="{{ asset('dist/images/logo-white.png') }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Enigma admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
@@ -42,17 +42,17 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div>
 
                         <a href="" class="-intro-x flex items-center pt-5">
-                            <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.svg') }}">
-                            <span class="text-white text-lg ml-3"> Enigma </span>
+                            <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.png') }}">
+                            <span class="text-white text-lg ml-3"> MindCom </span>
                         </a>
                     </div>
                     <div class="my-auto">
-                        <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/logo.png') }}">
+                        <img alt="Midone - HTML Admin Template" class="-intro-x w-1/2 -mt-16" src="{{ asset('dist/images/logo-white.png') }}">
                         <div class="-intro-x text-white font-medium text-4xl leading-tight mt-10">
-                            Connectez-vous à votre compte.
+                            Gérer votre stock.
                         </div>
-                        <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">Gérez tous vos
-                           matériels en un seul endroit</div>
+                        <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">
+                            Stock en un seul endroit</div>
                     </div>
                 </div>
 

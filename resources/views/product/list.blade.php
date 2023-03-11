@@ -60,7 +60,7 @@
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->unity->name }}</div>
                         </td>
                         <td class="w-40">
-                            <a href="" class="font-medium whitespace-nowrap">{{ $product->user->name }}</a>
+                            <a href="" class="font-medium whitespace-nowrap">{{ $product->user->fullName }}</a>
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $product->user->role->name }}</div>
                         </td>
                         <td class="text-center">{{ $product->achat }}</td>

@@ -12,7 +12,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- BEGIN: Head -->
     <head>
         <meta charset="utf-8">
-        <link href="{{ asset('dist/images/logo.svg') }}" rel="shortcut icon">
+        <link href="{{ asset('dist/images/logo.png') }}" rel="shortcut icon">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="Enigma admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
         <meta name="keywords" content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
@@ -147,7 +147,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <div class="menu__title"> Inventaire</div>
                                 </a>
                             </li>
-                        </u:
+                        </ul>
                     <li>
                         <a href="javascript:;" class="menu">
                             <div class="menu__icon"> <i data-lucide="box"></i> </div>
@@ -182,8 +182,8 @@ License: You must have a valid license purchased only from themeforest(the above
             <div class="h-full flex items-center">
                 <!-- BEGIN: Logo -->
                 <a href="" class="logo -intro-x hidden md:flex xl:w-[180px] block">
-                    <img alt="Midone - HTML Admin Template" class="logo__image w-6" src="{{ asset('dist/images/logo.svg') }}">
-                    <span class="logo__text text-white text-lg ml-3"> Enigma </span>
+                    <img alt="Midone - HTML Admin Template" class="logo__image w-6" src="{{ asset('dist/images/logo.png') }}">
+                    <span class="logo__text text-white text-lg ml-3"> MindCom </span>
                 </a>
                 <!-- END: Logo -->
                 <!-- BEGIN: Breadcrumb -->

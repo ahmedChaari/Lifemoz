@@ -30,7 +30,7 @@
 
                     <div class="form-group">
                         <label for="title">Product Name:</label>
-                        <input type="text" wire:model="name" class="form-control" id="taskTitle">
+                        <input type="text" wire:model="name" class="form-control" id="name">
                         @error('name') <span class="error">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">

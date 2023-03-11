@@ -1,192 +1,165 @@
 <div class="intro-y box py-10 sm:py-20 mt-5">
-       <!-- Circles which indicates the steps of the form: -->
+
+    @if(!empty($successMessage))
+    <div class="alert alert-success">
+       {{ $successMessage }}
+    </div>
+    @endif
+
+
+        <!-- progressbar -->
         <div class="relative before:hidden before:lg:block before:absolute before:w-[69%] before:h-[3px] before:top-0 before:bottom-0 before:mt-4 before:bg-slate-100 before:dark:bg-darkmode-400 flex flex-col lg:flex-row justify-center px-5 sm:px-20">
-            <div class="intro-x lg:text-center flex items-center lg:block flex-1 z-10">
-                <button class="step w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400" disabled>1</button>
-                <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Créer un Nouveau Compte</div>
+            <div class="intro-x lg:text-center flex items-center lg:block flex-1 z-10 {{ $currentStep != 1 ? '' : 'active' }}">
+                <a type="button" href="#step-1" class="step w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400" >1</a>
+                <div class="text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Configurez les détails de votre Entreprise</div>
             </div>
-            <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
-                <button class="step w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400" disabled>2</button>
-                <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Configurez Votre Profil</div>
+            <div class="intro-x lg:text-center flex items-center lg:mt-0 lg:block flex-1 z-10 {{ $currentStep != 2 ? '' : 'active' }}">
+                <a type="button" href="#step-2"
+                class="step w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400" >2</a>
+                <div class="text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Créer un Nouveau Compte</div>
             </div>
-            <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
-                <button class="step w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400" disabled>3</button>
-                <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Configurez les détails de votre Entreprise</div>
+            <div class="intro-x lg:text-center flex items-center lg:mt-0 lg:block flex-1 z-10 {{ $currentStep != 3 ? '' : 'active' }}">
+                <a type="button" href="#step-3" class="step w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400" disabled>3</a>
+                <div class="text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Finalisez Votre Compte</div>
             </div>
-            <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
-                <button class="step w-10 h-10 rounded-full btn text-slate-500 bg-slate-100 dark:bg-darkmode-400 dark:border-darkmode-400" disabled>4</button>
-                <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-slate-600 dark:text-slate-400">Configurer le Compte</div>
-            </div>
-            <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
-                <button class="step w-10 h-10 rounded-full btn btn-primary" disabled>5</button>
-                <div class="lg:w-32 font-medium text-base lg:mt-3 ml-3 lg:mx-auto" >Finalisez Votre Compte</div>
+
+        </div>
+    <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-slate-200/60 dark:border-darkmode-400">
+
+        <div class=" {{ $currentStep != 1 ? 'displayNone' : '' }}" id="step-1">
+
+            <div class="font-medium text-base">Créer un Nouveau Compte</div>
+                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="title" class="form-label">Nom de société</label>
+                        <input type="text" wire:model="name" class="form-control" id="taskTitle">
+                        @error('name') <span class="error btn-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="activite" class="form-label">Secteur d'activité</label>
+                        <input type="text" wire:model="activite" class="form-control" id="productAmount"/>
+                        @error('activite') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="date_creation" class="form-label">Date du Création</label>
+                        <input type="date" wire:model="date_creation" class="form-control" id="productAmount"/>
+                        @error('date_creation') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="pays" class="form-label">Votre pays</label>
+                        <select name="pays" wire:model="pays"  aria-label="Default select example" id="pays"
+                        class="form-control">
+                            <option value="" selected disabled>--------</option>
+                            @foreach($countries  as $country)
+                            <option value="{{ $country->nicename }}">{{ $country->nicename }}</option>
+                            @endforeach
+                        </select>
+                        @error('pays') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                    </div>
+
+
+
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="ville" class="form-label">Votre Ville</label>
+                        <select name="ville" wire:model="ville"  aria-label="Default select example" id="ville"
+                        class="form-control">
+                            <option value="" selected disabled>--------</option>
+                            @foreach($cities ?? '' as $city)
+                            <option value="{{ $city->ville }}">{{ $city->ville }}</option>
+                            @endforeach
+                        </select>
+                        @error('ville') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                    </div>
+
+
+
+                    <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="adresse" class="form-label">Adresse Complet</label>
+                        <input type="text" wire:model="adresse" class="form-control" id="productAmount"/>
+                        @error('adresse') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                    </div>
+
+
+                    <div class="intro-y col-span-12 sm:col-span-12" style="text-align: right;">
+
+                        <button class="btn w-32 btn-primary dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10 nextBtn" wire:click="firstStepSubmit" type="button">Next</button>
+
+                    </div>
+                </div>
+
+        </div>
+
+        <div class="setup-content {{ $currentStep != 2 ? 'displayNone' : '' }}" id="step-2">
+
+            <div class="font-medium text-base">Créer un Nouveau Compte</div>
+            <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
+                <div class="intro-y col-span-12 sm:col-span-6">
+                        <label for="title" class="form-label">nom complet</label>
+                        <input type="text" wire:model="fullName" class="form-control" id="taskemail">
+                        @error('fullName') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                </div>
+                <div class="intro-y col-span-12 sm:col-span-6">
+                    <label for="email" class="form-label">email</label>
+                    <input type="text" wire:model="email" class="form-control" id="productAmount"/>
+                    @error('email') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                </div>
+                <div class="intro-y col-span-12 sm:col-span-6">
+                    <label for="tel" class="form-label">Votre telephone</label>
+                    <input type="text" wire:model="tel" class="form-control" id="productAmount"/>
+                    @error('tel') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                </div>
+                <div class="intro-y col-span-12 sm:col-span-6">
+                    <label for="password" class="form-label">password</label>
+                    <input type="password" wire:model="password" class="form-control" id="productAmount"/>
+                    @error('password') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                </div>
+                <div class="intro-y col-span-12 sm:col-span-12" style="text-align: right;">
+
+
+
+                    <button class="btn w-32 btn-outline-danger dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10" type="button" wire:click="back(1)">Back</button>
+                    <button class="btn w-32 btn-primary dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10 nextBtn" type="button" wire:click="secondStepSubmit">Next</button>
+
+
+                </div>
             </div>
         </div>
 
-      
-        <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-slate-200/60 dark:border-darkmode-400">
-        <!-- One "tab" for each step in the form: -->
-       
-@if ($step <= 1)
-    <form wire:submit.prevent="step1" >
-            <div class="tab">
-                <div class="font-medium text-base">Créer un Nouveau Compte</div>
-                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-1" class="form-label">Nom de société</label>
-                        <input id="input-wizard-1" type="text" class="form-control" wire:model="name" placeholder="Nom de société">
-                        @error('name')
-                        <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
-                            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-2" class="form-label">Secteur d'activité</label>
-                        <input id="input-wizard-2" type="text" class="form-control" wire:model="activite" 
-                        name="activite" placeholder="Secteur d'activité">
-                        @error('activite')
-                        <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
-                            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-3" class="form-label">Date du Création</label>
-                        <input type="date" id="input-wizard-3" class="form-control" wire:model="date_creation" 
-                        name="date_creation">
-                        @error('date_creation')
-                        <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
-                            <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
-                        @enderror
-                    </div>
-                    
-                </div>
-                <div class="mt-3" style="overflow:auto; float:right;">
-                        <!-- <button class="btn btn-secondary w-24" type="button" id="prevBtn" >Previous</button> -->
-                    <button class="btn btn-primary w-24 ml-2" type="submit"  >Continuer</button>
-                </div>
-            </div>
-        </form>
-        @elseif ($step <= 2)
-        <form wire:submit.prevent="step2" >
-            <div class="tab">
-                <div class="font-medium text-base">Configurez Votre Profil</div>
-                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-1" class="form-label">Nom de Gerant</label>
-                        <input id="input-wizard-1" name="gerant"
-                            type="text" class="form-control" placeholder="Nom de Gerant">
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-2" class="form-label">Email</label>
-                        <input id="input-wizard-2" type="text" class="form-control"
-                            name="email"
-                        placeholder="example@gmail.com">
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-3" class="form-label">Ville</label>
-                        <select id="input-wizard-3" name="ville" value="ville"
-                            class="form-select">
-                            <option value="Rabat">Rabat</option>
-                            <option value="Marrakech">Marrakech</option>
-                            <option value="Kenitra">Kenitra</option>
-                            <option value="Sale">Sale</option>
-                        </select>
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-4" class="form-label">Pays</label>
-                        <select id="input-wizard-3" name="pays" value="pays"
-                            class="form-select">
-                            <option value="Rabat">Maroc</option>
-                            <option value="Marrakech">France</option>
-                            <option value="Kenitra">Espagne</option>
-                            <option value="Sale">USA</option>
-                        </select>
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-16">
-                        <label for="input-wizard-5" class="form-label">Adresse Complète</label>
-                        <textarea name="" id="input-wizard-4" class="form-control" cols="30" name="adresse"
-                        placeholder="Rue 58 BD N°12" rows="10"></textarea>
-                    </div>
-                    
-                </div>
-                <div class="mt-3" style="overflow:auto; float:right;">
-                        <button class="btn btn-secondary w-24" type="button" wire:click="stepBack" wire:loading.attr="disabled" >Previous</button>
-                        <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" >Continuer</button>
-                    </div>
-            </div>
-        </form>
-            @elseif ($step <= 3)
-        <form wire:submit.prevent="step3" >
-            <div class="tab">
-                <div class="font-medium text-base">Configurez les détails de votre Entreprise</div>
-                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-1" class="form-label">Téléphone</label>
-                        <input id="input-wizard-1" type="text" class="form-control" name="tel" placeholder="0 XX XX XX XX">
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-2" class="form-label">Téléphone Fix</label>
-                        <input id="input-wizard-2" type="text" class="form-control" name="tel_mobile" placeholder="0 XX XX XX XX">
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-3" class="form-label">Fax</label>
-                        <input id="input-wizard-3" type="text" class="form-control" name="fax" placeholder="0 XX XX XX XX">
-                    </div>
-                    <div class="mt-3" style="overflow:auto; float:right;">
-                        <button class="btn btn-secondary w-24" type="button" wire:click="stepBack" wire:loading.attr="disabled" >Previous</button>
-                        <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" >Continuer</button>
-                    </div>
-                </div>
-            </div>
-        </form> 
-            @elseif ($step <= 4)
-        <form wire:submit.prevent="step4" >
-            <div class="tab">
-                <div class="font-medium text-base">Configurer le Compte</div>
-                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-1" class="form-label">Registre Commerce</label>
-                        <input id="input-wizard-1" type="text" class="form-control" name="registre_commerce" placeholder="">
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-2" class="form-label">Fiscale</label>
-                        <input id="input-wizard-2" type="text" class="form-control" name="fiscale" placeholder="">
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-3" class="form-label">ICE</label>
-                        <input id="input-wizard-3" type="text" class="form-control" name="ICE" placeholder="">
-                    </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-4" class="form-label">Patent</label>
-                        <input id="input-wizard-4" type="text" class="form-control" name="patent" placeholder="">
-                    </div>
-                    <div class="mt-3" style="overflow:auto; float:right;">
-                        <button class="btn btn-secondary w-24" type="button" wire:click="stepBack" wire:loading.attr="disabled" >Previous</button>
-                        <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" >Continuer</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-        @else($step <= 5)
-        <form wire:submit.prevent="step5" >
-            <div class="tab">
-                <div class="font-medium text-base">Finalisez Votre Compte</div>
-                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                    <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="input-wizard-1" class="form-label">Votre SitWeb</label>
-                        <input id="input-wizard-1" type="text" name="web" class="form-control" placeholder="www.yourwebsite.com">
-                    </div>
-                </div>
-            </div>
-            <div class="mt-3" style="overflow:auto; float:right;">
-            <div class="mt-3" style="overflow:auto; float:right;">
-                <button class="btn btn-secondary w-24" type="button" wire:click="stepBack" wire:loading.attr="disabled" >Previous</button>
-                <button class="btn btn-primary w-24 ml-2" type="submit" id="nextBtn" >Continuer</button>
-            </div>
-            </div>
-        </form>
-        @endif
+        <div class="setup-content {{ $currentStep != 3 ? 'displayNone' : '' }}" id="step-3">
+
+
+
+
+    <!-- BEGIN: Ads 1 -->
+    <div class="col-span-12 sm:col-span-12">
+        <div class="box p-8 relative overflow-hidden intro-y" style="background-color: #164e63c7!important;">
+            <div class="leading-[2.15rem] w-full sm:w-72 text-white text-xl -mt-3"> Mr . <span style="text-decoration: underline #ffff;">{{$fullName}} </span>
+                 vous avez créés compte avec la societe <span style="text-decoration: underline #ffff;">{{$name}}</span></div>
+            <div class="w-full sm:w-72 leading-relaxed text-white/70 dark:text-slate-500 mt-3">votre compte sera activé moins de 24h.</div>
+            <button class="btn w-32 btn-outline-danger dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10" type="button" wire:click="back(2)">Back</button>
+
+
+            <button class="btn btn-outline-success w-32 bg-white dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10" wire:click="submitForm" type="button">Finish!</button>
+
+
+
+
+            <img class="hidden sm:block absolute top-0 right-0 w-2/5 -mt-3 mr-2" alt="Midone - HTML Admin Template" src="dist/images/woman-illustration.svg">
         </div>
     </div>
+    <!-- END: Ads 1 -->
 
-<!-- END: Content -->
+                </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+
+

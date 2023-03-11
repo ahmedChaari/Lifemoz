@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
            // $table->id();
             $table->uuid('id')->primary();
             $table->foreignUuid('company_id');
-            $table->string('name');
+            $table->string('fullName');
             $table->string('tel')->nullable();
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();

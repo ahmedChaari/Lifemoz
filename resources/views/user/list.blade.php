@@ -52,7 +52,7 @@
                     @foreach($users as $user)
                     <tr class="intro-x">
                         <td class="w-50">
-                            <a href="" class="font-medium whitespace-nowrap">{{ $user->name }}</a>
+                            <a href="" class="font-medium whitespace-nowrap">{{ $user->fullName }}</a>
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $user->email }}</div>
                         </td>
                         <td class="text-center w-80">

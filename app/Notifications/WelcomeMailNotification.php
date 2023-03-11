@@ -44,7 +44,7 @@ class WelcomeMailNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->greeting('Hello, '.$this->user->name)
+                    ->greeting('Hello, '.$this->user->fullName)
                     ->line('The introduction to the notification.')
                   //  ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');

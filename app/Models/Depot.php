@@ -22,4 +22,9 @@ class Depot extends Model
     {
         return $this->belongsTo(Company::class);
     }
+
+    public function sales(): ?HasMany
+    {
+       return $this->hasMany(Sale::class);
+    }
 }

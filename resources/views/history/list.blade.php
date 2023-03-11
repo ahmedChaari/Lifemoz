@@ -35,7 +35,7 @@
                         </td>
                         <td class="text-center">{{ $history->name }}</td>
                         <td class="w-40">
-                            <a href="" class="font-medium whitespace-nowrap">{{ $history->user->name }}</a>
+                            <a href="" class="font-medium whitespace-nowrap">{{ $history->user->fullName }}</a>
                             <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $history->user->role->name }}</div>
                         </td>
                         <td class="table-report__action w-56">
@@ -69,7 +69,7 @@
                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-2" class="form-label">Name d'Evenement</label></div>
                 <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">  {{ $history->name }}</div>
                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-3" class="form-label">Modification de</label></div>
-                <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">  {{ $history->user->name }}</div>
+                <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">  {{ $history->user->fullName }}</div>
                 <div class="col-span-12 sm:col-span-6"> <label for="modal-form-4" class="form-label">Le Role</label></div>
                 <div class="col-span-12 sm:col-span-6 font-medium whitespace-nowrap">  {{ $history->user->role->name }}</div>
             </div> <!-- END: Modal Body -->

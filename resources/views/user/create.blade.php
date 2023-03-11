@@ -19,10 +19,10 @@
 
                             <div class="input-form mt-3">
                                 <label for="validation-form-1" class="form-label w-full flex flex-col sm:flex-row"> Nom <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-slate-500">Required, at least 3 characters</span> </label>
-                                <input id="name" type="text" name="name" value="{{ old('name') }}"
+                                <input id="fullName" type="text" name="fullName" value="{{ old('fullName') }}"
 
                                 class="form-control" placeholder="Name" minlength="2" required>
-                                @error('name')
+                                @error('fullName')
                                 <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
                                     <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
                                 @enderror
