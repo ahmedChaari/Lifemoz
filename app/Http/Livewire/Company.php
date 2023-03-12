@@ -29,9 +29,8 @@ class Company extends Component
     public function render()
     {
 
-        $cities = City::orderBy('ville', 'ASC')->get();
-        $countries  = Country::get();
-
+            $cities = City::orderBy('ville', 'ASC')->get();
+            $countries  = Country::get();
         return view('livewire.company')->with('cities', $cities)->with('countries', $countries);
     }
 

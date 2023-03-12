@@ -16,6 +16,7 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('code');
+            $table->foreignUuid('company_id');
             $table->foreignUuid('depot_id');
             $table->foreignUuid('product_id');
             $table->integer('quantite');

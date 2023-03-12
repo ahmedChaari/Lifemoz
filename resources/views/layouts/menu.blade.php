@@ -59,6 +59,12 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                     </li>
                     <li>
+                        <a href="{{route('sale.list')}}" class="menu">
+                            <div class="menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="menu__title"> Vente </div>
+                        </a>
+                    </li>
+                    <li>
                         <a href="{{route('history.list')}}" href="" class="menu">
                             <div class="menu__icon"> <i data-lucide="file-text"></i> </div>
                             <div class="menu__title"> Journal <br> des modifications </div>
@@ -266,6 +272,12 @@ License: You must have a valid license purchased only from themeforest(the above
                         <a href="" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="monitor"></i> </div>
                             <div class="side-menu__title"> Entreprise </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('sale.list') }}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="shopping-bag"></i> </div>
+                            <div class="side-menu__title"> Vente </div>
                         </a>
                     </li>
                     <li>

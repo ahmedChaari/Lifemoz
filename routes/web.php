@@ -7,6 +7,7 @@ use App\Http\Controllers\DepotController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\UnityController;
 use App\Http\Controllers\UserController;
 use App\Models\City;
@@ -108,6 +109,11 @@ Route::put('/updateRole/{role}',   [RoleController::class, 'updateRole']) ->name
 
 //compnay
 Route::get('/company/edit', function () { return view('company.create');})->name('company.edit')->middleware('auth');
+
+
+//sale
+Route::get('/sales',          [SaleController::class, 'listSale'])  ->name('sale.list')->middleware('auth');
+
 
 // Route::post('/createCompany',           [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');
 Route::put('/UpdateCompany/{company}',           [CompanyController::class, 'UpdateCompany']) ->name('company.update')->middleware('auth');
