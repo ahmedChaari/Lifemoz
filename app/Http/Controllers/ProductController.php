@@ -59,7 +59,8 @@ class ProductController extends Controller
         'quantite'    => $product->quantite,
         'user_id'     => $user,
     ]);
-    return  redirect(route('Product.list'));
+//    return  view('product.list');
+    return redirect(route('product.list'));
    }
 
 // update product + create history
@@ -90,7 +91,7 @@ class ProductController extends Controller
         'quantite'    => $product->quantite,
         'user_id'     => $user,
     ]);
-        return  redirect(route('product.list'));
+        return  view('product.list');
     }
 
 
@@ -99,8 +100,10 @@ class ProductController extends Controller
     {
         $company = Auth::user()->company_id;
         $category = Category::where('company_id', $company)->get();
-        $unity = Unity::where('company_id', $company)->get();
-        $depot = Depot::where('company_id', $company)->get();
+        $unity = Unity::where('company_id', $company)
+                ->get();
+        $depot = Depot::where('company_id', $company)
+                ->get();
         return view('product.create')
             ->with('depots',$depot)
             ->with('categories',$category)

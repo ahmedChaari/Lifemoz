@@ -4,12 +4,12 @@
 
 <div class="content" style="padding-top: 0rem;">
     <h2 class="intro-y text-lg font-medium mt-10">
-        LIST DU ROLES
+        LIST DU VENTES
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <a href="javascript:;"  class="btn btn-primary shadow-md mr-2"
-            data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview-depot"
+            data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview-sale"
             title="Ajouter un Depot"
             >AJOUTTER ROLE</a>
             <div class="dropdown">
@@ -100,7 +100,7 @@
 
 
     <!-- BEGIN: Modal Content  category-->
-    <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
+    <div id="header-footer-modal-preview-sale" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <!-- BEGIN: Modal Header -->
@@ -108,24 +108,46 @@
                     <h2 class="font-medium text-base mr-auto">Creation un Vente</h2>
                 </div> <!-- END: Modal Header -->
                 <!-- BEGIN: Modal Body -->
-                <form method="POST" action="{{route('vente.create')}}" enctype="multipart/form-data">
+                <form method="POST" action="{{route('sale.create')}}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
-                        <div class="col-span-12 sm:col-span-12"> <label for="modal-form-1" class="form-label">Nom</label>
-                            <input name="nameCategory" id="nameCategory"
-                            type="text" class="form-control" placeholder="Nom de Category">
-                            @error('nameCategory')
+                        <div class="col-span-12 sm:col-span-12"> <label for="modal-form-1" class="form-label">Nom du produit</label>
+                            <select class="form-select mt-2 sm:mr-2" name="product_id" aria-label="Default select example">
+                                <option value="" selected disabled>--------</option>
+                                    @foreach($products as $product)
+                                        <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+                        <div class="col-span-12 sm:col-span-12"> <label for="modal-form-1" class="form-label">Nom du depot</label>
+                            <select class="form-select mt-2 sm:mr-2" name="depot_id" aria-label="Default select example">
+                                <option value="" selected disabled>--------</option>
+                                    @foreach($depots as $depot)
+                                        <option value="{{ $depot->id }}">{{ $depot->name }}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+                        <div class="col-span-12 sm:col-span-12"> <label for="modal-form-1" class="form-label">Quantite de produit</label>
+                            <input name="quantite" id="quantite"
+                            type="number" class="form-control" placeholder="quantite de produit">
+                            @error('quantite')
                             <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
                                 <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="col-span-12 sm:col-span-12"> <label for="modal-form-2" class="form-label">Description</label> <textarea name="description" id="modal-form-2" type="text" class="form-control" placeholder="description pour le produit"> </textarea></div>
+                        <div class="col-span-12 sm:col-span-12"> <label for="modal-form-1" class="form-label">Prix par unite</label>
+                            <input name="price" id="price"
+                            type="number" class="form-control" placeholder="Prix par unite ">
+                            @error('price')
+                            <div class="alert alert-danger-soft show flex items-center mb-2" role="alert">
+                                <i data-lucide="alert-octagon" class="w-6 h-6 mr-2"></i> {{ $message }}</div>
+                            @enderror
+                        </div>
                     </div> <!-- END: Modal Body -->
                     <!-- BEGIN: Modal Footer -->
                     <div class="modal-footer">
                         <button type="button" data-tw-dismiss="modal" class="btn btn-danger w-20 mr-1">Cancel</button>
-
-                        <button type="submit" {{  (isset($nameCategory)) ? '' : 'disabled' }}
+                        <button type="submit"
                         class="btn btn-outline-primary w-20">Create</button> </div> <!-- END: Modal Footer -->
 
                 </form>

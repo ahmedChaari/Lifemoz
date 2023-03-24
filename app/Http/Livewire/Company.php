@@ -2,11 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\City;
 use App\Models\CompanyCreate;
 use App\Models\Country;
+use App\Models\Depot;
 use App\Models\Historic;
 use App\Models\Pays;
+use App\Models\Service;
+use App\Models\Unity;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -77,6 +81,7 @@ class Company extends Component
      */
     public function submitForm()
     {
+
       $company =  CompanyCreate::create([
             'name' => $this->name,
             'activite' => $this->activite,
@@ -87,15 +92,28 @@ class Company extends Component
             'adresse' => $this->adresse,
         ]);
 
-        User::create([
+      $user =  User::create([
             'fullName' => $this->fullName,
             'email' => $this->email,
             'tel' => $this->tel,
             'password'   => Hash::make($this->password),
             'company_id' => $company->id,
+            'fonction'   => 'administrateur',
             'role_id' => 1,
             'active' => 0,
         ]);
+
+        $serviceId = Service::create(['company_id'  => $company->id, 'name' => 'Rabat siège',]);
+        Depot::create(['company_id'    => $company->id, 'name' => 'Depot prinsipale',]);
+        Category::create(['company_id' => $company->id, 'name' => 'Plastique',]);
+        Unity::create(['company_id'    => $company->id, 'name' => 'kilograme',]);
+
+      $user = User::where('id',$user->id)->first();
+                $user->update([
+                        'service_id' => $serviceId->id,
+                    ]);
+
+
 
         $this->successMessage = 'Product Created Successfully.';
 

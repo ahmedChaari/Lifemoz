@@ -67,9 +67,9 @@ Route::get('/editTest/{user}',      [UserController::class, 'editTest'])      ->
 Route::put('/updateUserList/{user}',[UserController::class, 'updateUserList'])  ->name('user.updateUserList')->middleware('auth');
 
 // products
-Route::get('/produits',            [ProductController::class, 'listProduct'])   ->name('product.list')->middleware('auth');
+Route::get('/produits',               [ProductController::class, 'listProduct'])   ->name('product.list')->middleware('auth');
 Route::get('/create/product',         [ProductController::class, 'create'])        ->name('product.createView')->middleware('auth');
-Route::post('/createProduct',         [ProductController::class, 'createProduct']) ->name('product.create')->middleware('auth');
+Route::post('/store/product',         [ProductController::class, 'createProduct']) ->name('product.create')->middleware('auth');
 Route::put('/updateProduct/{product}',[ProductController::class, 'updateProduct']) ->name('product.update')->middleware('auth');
 Route::get('/editProduct/{product}',  [ProductController::class, 'editProduct'])   ->name('product.edit')->middleware('auth');
 Route::get('/deleteProduct/{id}',     [ProductController::class, 'deleteProduct'])->name('product.delete')->middleware('auth');
@@ -113,6 +113,7 @@ Route::get('/company/edit', function () { return view('company.create');})->name
 
 //sale
 Route::get('/sales',          [SaleController::class, 'listSale'])  ->name('sale.list')->middleware('auth');
+Route::post('/create/sale',         [SaleController::class, 'createSale']) ->name('sale.create')->middleware('auth');
 
 
 // Route::post('/createCompany',           [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');

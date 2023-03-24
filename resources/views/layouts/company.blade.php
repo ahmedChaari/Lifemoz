@@ -50,7 +50,12 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 <!-- BEGIN: Login Info -->
 
-
+                <div>
+                    <a href="{{ route('login') }}" class="-intro-x flex items-center pt-5">
+                        <img alt="Midone - HTML Admin Template" class="w-6" src="{{ asset('dist/images/logo.png') }}">
+                        <span class="text-white text-lg ml-3"> MindCom </span>
+                    </a>
+                </div>
 
                     <!-- END: Login Info -->
                     <!-- BEGIN: Login Form -->

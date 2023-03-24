@@ -17,7 +17,7 @@ class CreateSalesTable extends Migration
             $table->uuid('id')->primary();
             $table->string('code');
             $table->foreignUuid('company_id');
-            $table->foreignUuid('depot_id');
+            $table->foreignUuid('depot_id')->nullable();
             $table->foreignUuid('product_id');
             $table->integer('quantite');
             $table->float('price', 8, 2);

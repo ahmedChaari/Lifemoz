@@ -33,7 +33,6 @@ class DepotController extends Controller
     public function listDepot(){
         $company = Auth::user()->company_id;
         $depots = Depot::where('company_id', $company)
-        ->orWhere('company_id', null)
                         ->paginate(10);
         return view('depot.list' , compact('depots'));
     }
@@ -46,9 +45,9 @@ class DepotController extends Controller
             'name'        => $request->name,
         ]);
         if (isset($depot)) {
-            
+
             $name = 'update depot';
-    
+
                 Historic::create([
                     'name'        => $name,
                     'company_id'  => $company,
@@ -60,7 +59,7 @@ class DepotController extends Controller
                 'errors' => $request->errors()
             ]);
         }
-        
+
     }
 
 

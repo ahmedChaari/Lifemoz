@@ -62,7 +62,7 @@ class CategoryController extends Controller
     public function listCategory(){
         $company = Auth::user()->company_id;
         $categories = Category::where('company_id', $company)
-                            ->orWhere('company_id', null)
+
                         ->paginate(10);
         return view('category.list' , compact('categories'));
     }

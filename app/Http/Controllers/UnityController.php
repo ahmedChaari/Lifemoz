@@ -32,7 +32,7 @@ class UnityController extends Controller
     public function listUnity(){
         $company = Auth::user()->company_id;
         $unities = Unity::where('company_id', $company)
-        ->orWhere('company_id', null)
+
                         ->paginate(10);
         return view('unity.list' , compact('unities'));
     }

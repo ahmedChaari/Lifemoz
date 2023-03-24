@@ -9,20 +9,21 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                         <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">
-                            Sign In
+                            Identification
                         </h2>
                         <div class="intro-x mt-2 text-slate-400 xl:hidden text-center">A few more clicks to sign in to your account.</div>
 
                         <div class="intro-x mt-8">
-                            <input id="email" type="email" class="intro-x login__input form-control py-3 px-4 block  @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" type="email" class="intro-x login__input form-control py-3 px-4 block
+                             @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required autocomplete="E-mail" autofocus>
                             @error('email')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="invalid-feedback alert-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-                            <input type="password" class="intro-x login__input form-control py-3 px-4 block mt-4 @error('password') is-invalid @enderror" placeholder="Password" name="password" required autocomplete="current-password">
+                            <input type="password" class="intro-x login__input form-control py-3 px-4 block mt-4 @error('password') is-invalid @enderror" placeholder="Mot de passe" name="password" required autocomplete="current-password">
                             @error('password')
-                            <span class="invalid-feedback" role="alert">
+                            <span class="invalid-feedback alert-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
@@ -30,19 +31,22 @@
                         <div class="intro-x flex text-slate-600 dark:text-slate-500 text-xs sm:text-sm mt-4">
                             <div class="flex items-center mr-auto">
                                 <input name="remember" id="remember" type="checkbox" class="form-check-input border mr-2" {{ old('remember') ? 'checked' : '' }}>
-                                <label class="cursor-pointer select-none" for="remember-me">{{ __('Remember Me') }}</label>
+                                <label class="cursor-pointer select-none" for="remember-me">{{ __('Se souvenir de moi') }}</label>
                             </div>
                             @if (Route::has('password.request'))
                             <a  href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
+                                {{ __('Mot de passe oublié?') }}
                             </a>
                         @endif
                         </div>
                         <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                            <button type="submit" class="btn btn-primary py-3 px-4 w-full xl:w-32 xl:mr-3 align-top">Login</button>
-                            <a href="{{ route('company.create') }}" class="btn btn-outline-secondary py-3 px-4 w-full xl:w-32 mt-3 xl:mt-0 align-top">Register</a>
+
+                            <div class="d-grid gap-2 d-md-block">
+
+                                <button type="submit" class="btn btn-primary py-3 px-4 w-full align-top">Se connecter</button> <br>
+                                <a href="{{ route('company.create') }}" class="btn btn-outline-success py-3 px-4 w-full align-top mt-2">Créer votre Entreprise</a>
+                            </div>
                         </div>
-                        <div class="intro-x mt-10 xl:mt-24 text-slate-600 dark:text-slate-500 text-center xl:text-left"> By signin up, you agree to our <a class="text-primary dark:text-slate-200" href="">Terms and Conditions</a> & <a class="text-primary dark:text-slate-200" href="">Privacy Policy</a> </div>
                     </form>
                     </div>
 
