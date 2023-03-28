@@ -22,7 +22,7 @@ class Company extends Component
 
     public $currentStep = 1;
     public $name, $activite, $date_creation, $email , $pays , $fullName ,
-     $ville,$adresse,$tel,$password ;
+     $ville, $adresse, $tel, $password ;
     public $successMessage = '';
 
     /**
@@ -66,7 +66,7 @@ class Company extends Component
     {
         $validatedData = $this->validate([
             'fullName' => 'required',
-            'tel' => 'required',
+            'tel'      => 'required',
             'email'    => 'required|unique:users',
             'password' => 'required',
         ]);
@@ -81,12 +81,12 @@ class Company extends Component
      */
     public function submitForm()
     {
-
       $company =  CompanyCreate::create([
             'name' => $this->name,
             'activite' => $this->activite,
             'date_creation' => $this->date_creation,
             'email' => $this->email,
+            'tel' => $this->tel,
             'pays' => $this->pays,
             'ville' => $this->ville,
             'adresse' => $this->adresse,

@@ -296,7 +296,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         </a>
                         <ul class="">
                             <li>
-                                <a href="{{ route('company.edit') }}" class="side-menu">
+                                <a href="{{ route('company.edit', Auth::user()->company_id) }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Paramétrage général </div>
                                 </a>

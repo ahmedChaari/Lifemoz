@@ -24,10 +24,12 @@ class Update2CompanyRequest extends FormRequest
     public function rules()
     {
         return [
-            'gerant'     => 'required',
-            'adresse'    => 'required',
-            'ville'      => 'required',
-            'paye'       => 'required',
+            'name'          => 'required|string|min:3|max:255',
+            'activite'      => 'required',
+            'date_creation' => 'required|date',
+            'ville'         => 'required',
+            'pays'          => 'required',
+            'adresse'       => 'required',
         ];
     }
 }

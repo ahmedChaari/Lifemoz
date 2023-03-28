@@ -44,7 +44,7 @@
                             <div class="d-grid gap-2 d-md-block">
 
                                 <button type="submit" class="btn btn-primary py-3 px-4 w-full align-top">Se connecter</button> <br>
-                                <a href="{{ route('company.create') }}" class="btn btn-outline-success py-3 px-4 w-full align-top mt-2">Créer votre Entreprise</a>
+                                <a href="{{ route('company') }}" class="btn btn-outline-success py-3 px-4 w-full align-top mt-2">Créer votre Entreprise</a>
                             </div>
                         </div>
                     </form>

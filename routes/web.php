@@ -108,7 +108,12 @@ Route::put('/updateRole/{role}',   [RoleController::class, 'updateRole']) ->name
 
 
 //compnay
-Route::get('/company/edit', function () { return view('company.create');})->name('company.edit')->middleware('auth');
+Route::get('/company/modifier/{company}', [CompanyController::class, 'editCompany'])->name('company.edit')->middleware('auth');
+// Route::post('/createCompany',           [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');
+Route::put('/company/modifier/info/{company}',     [CompanyController::class, 'updateCompany']) ->name('company.update')->middleware('auth');
+
+
+Route::get('/create',             [CompanyController::class, 'create'])->name('company.create');
 
 
 //sale
@@ -116,14 +121,9 @@ Route::get('/sales',          [SaleController::class, 'listSale'])  ->name('sale
 Route::post('/create/sale',         [SaleController::class, 'createSale']) ->name('sale.create')->middleware('auth');
 
 
-// Route::post('/createCompany',           [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');
-Route::put('/UpdateCompany/{company}',           [CompanyController::class, 'UpdateCompany']) ->name('company.update')->middleware('auth');
-
-
-Route::get('/create',             [CompanyController::class, 'create'])->name('company.create');
 
 
 Route::get('/company', function () {
 
     return view('layouts.company');
-});
+})->name('company');
