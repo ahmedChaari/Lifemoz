@@ -148,7 +148,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="side-menu">
+                                <a href="{{ route('inventory.list') }}" class="side-menu">
                                     <div class="menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="menu__title"> Inventaire</div>
                                 </a>
@@ -360,7 +360,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="side-menu">
+                                <a href="{{ route('inventory.list') }}" class="side-menu">
                                     <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                     <div class="side-menu__title"> Inventaire</div>
                                 </a>

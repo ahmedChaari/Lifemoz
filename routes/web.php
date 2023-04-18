@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DepotController;
 use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SaleController;
@@ -108,10 +109,13 @@ Route::put('/updateRole/{role}',   [RoleController::class, 'updateRole']) ->name
 
 
 //compnay
-Route::get('/company/modifier/{company}', [CompanyController::class, 'editCompany'])->name('company.edit')->middleware('auth');
-// Route::post('/createCompany',           [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');
+Route::get('/company/modifier/{company}',      [CompanyController::class, 'editCompany'])->name('company.edit')->middleware('auth');
+// Route::post('/createCompany',               [CompanyController::class, 'createCompany']) ->name('company.create')->middleware('auth');
 Route::put('/company/modifier/info/{company}',     [CompanyController::class, 'updateCompany']) ->name('company.update')->middleware('auth');
+Route::put('/company/modifier/param/{company}',    [CompanyController::class, 'updateParamCompany']) ->name('company.param.update')->middleware('auth');
+Route::put('/company/modifier/commer/{company}',   [CompanyController::class, 'updateCommCompany']) ->name('company.comm.update')->middleware('auth');
 
+Route::put('/company/modifier/logo/{company}',   [CompanyController::class, 'updatelogoCompany']) ->name('company.logo.update')->middleware('auth');
 
 Route::get('/create',             [CompanyController::class, 'create'])->name('company.create');
 
@@ -120,10 +124,13 @@ Route::get('/create',             [CompanyController::class, 'create'])->name('c
 Route::get('/sales',          [SaleController::class, 'listSale'])  ->name('sale.list')->middleware('auth');
 Route::post('/create/sale',         [SaleController::class, 'createSale']) ->name('sale.create')->middleware('auth');
 
+//inventory
+Route::get('/inventories',          [InventoryController::class, 'listInventory'])  ->name('inventory.list')->middleware('auth');
+Route::post('/create/inventaire',   [InventoryController::class, 'createInvenory']) ->name('inventory.create')->middleware('auth');
+
 
 
 
 Route::get('/company', function () {
-
     return view('layouts.company');
 })->name('company');

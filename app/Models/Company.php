@@ -44,4 +44,8 @@ class Company extends Model
      {
         return $this->hasMany(Category::class);
      }
+     public function inventories(): ?HasMany
+     {
+        return $this->hasMany(Inventory::class);
+     }
 }

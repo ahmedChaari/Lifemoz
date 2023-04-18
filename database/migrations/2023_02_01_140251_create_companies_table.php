@@ -23,9 +23,9 @@ class CreateCompaniesTable extends Migration
             $table->text('pays')->nullable();
             $table->text('adresse')->nullable();
             $table->string('email')->nullable();
-            $table->integer('tel')->nullable();
-            $table->integer('tel_mobile')->nullable();
-            $table->integer('fax')->nullable();
+            $table->bigInteger('tel')->nullable();
+            $table->bigInteger('tel_mobile')->nullable();
+            $table->bigInteger('fax')->nullable();
             $table->string('ICE')->nullable();
             $table->string('fiscale')->nullable();
             $table->string('registre_commerce')->nullable();

@@ -23,10 +23,10 @@
             </ul>
             <div class="post__content tab-content">
                 <!--  first content-->
-                <form method="POST" action="{{ route('company.update' , $company->id) }}"  >
-                        @csrf
-                        @method('PUT')
-                    <div id="content" class="tab-pane p-5 active" role="tabpanel" aria-labelledby="content-tab">
+                <div id="content" class="tab-pane p-5 active" role="tabpanel" aria-labelledby="content-tab">
+                        <form method="POST" action="{{ route('company.update' , $company->id) }}"  >
+                                @csrf
+                                @method('PUT')
                         <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
                             <div class="intro-y col-span-12 sm:col-span-6">
                                 <label for="name" class="form-label">Nom de société</label>
@@ -85,45 +85,52 @@
                                 type="button">Modifier</button>
                             </div>
                         </div>
+                    </form>
                     </div>
-                </form>
                  <!-- end first content-->
                  <!--  second content-->
                 <div id="meta-title" class="tab-pane p-5" role="tabpanel" aria-labelledby="meta-title-tab">
+                    <form method="POST" action="{{ route('company.param.update' , $company->id) }}"  >
+                        @csrf
+                        @method('PUT')
                     <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
                         <div class="mt-5">
                             <div class="mt-3">
                                 <div class="intro-y col-span-12 sm:col-span-6 mt-4">
                                     <label for="email" class="form-label">E-mail</label>
-                                    <input type="text" class="form-control" value="{{ $company->email }}" name="mail" />
+                                    <input type="text" class="form-control" value="{{ $company->email }}" name="email" />
                                     @error('email') <span class="error  btn-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="intro-y col-span-12 sm:col-span-6 mt-4">
-                                    <label for="title" class="form-label">Téléphone Fix</label>
-                                    <input type="text"  class="form-control" value="{{ $company->tel }}" name="tel" >
+                                    <label for="tel" class="form-label">Téléphone Fix</label>
+                                    <input type="number"  class="form-control" value="{{ $company->tel }}" name="tel" >
                                     @error('tel') <span class="error  btn-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="intro-y col-span-12 sm:col-span-6 mt-4">
-                                    <label for="tel" class="form-label">Téléphone Mobile</label>
-                                    <input type="text" class="form-control" value="{{ $company->tel_mobile }}" name="tel_mobile" />
+                                    <label for="tel_mobile" class="form-label">Téléphone Mobile</label>
+                                    <input type="number" class="form-control" value="{{ $company->tel_mobile }}" name="tel_mobile" />
                                     @error('tel_mobile') <span class="error  btn-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="intro-y col-span-12 sm:col-span-6 mt-4">
                                     <label for="fax" class="form-label">Fax</label>
-                                    <input type="text"  class="form-control" value="{{ $company->fax }}" name="fax"/>
+                                    <input type="number"  class="form-control" value="{{ $company->fax }}" name="fax"/>
                                     @error('fax') <span class="error btn-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="intro-y col-span-12 sm:col-span-12" style="text-align: right;">
-                                    <button class="btn w-32 btn-primary dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10"
+                                    <button class="btn w-32 btn-primary dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10" type="submit"
                                     type="button">Modifier </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <!-- end second content-->
                 <!--  3 content-->
                 <div id="keywords" class="tab-pane p-5" role="tabpanel" aria-labelledby="meta-title-tab">
+                    <form method="POST" action="{{ route('company.comm.update' , $company->id) }}"  >
+                        @csrf
+                        @method('PUT')
                     <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5 mt-5">
                         <div class="mt-5">
                             <div class="mt-3">
@@ -148,50 +155,53 @@
                                     @error('patent') <span class="error  btn-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="intro-y col-span-12 sm:col-span-12" style="text-align: right;">
-                                    <button class="btn w-32 btn-primary dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10"
+                                    <button class="btn w-32 btn-primary dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10" type="submit"
                                     type="button">Modifier </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <!-- end 3 content-->
                 <!--  4 content-->
                 <div id="logo" class="tab-pane p-5" role="tabpanel" aria-labelledby="meta-title-tab">
-                    <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5  mt-5">
-                        <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
-                            <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i>Site web & Images </div>
-                        <div class="grid grid-cols-12 mt-4">
-                            <div class="intro-y col-span-12 sm:col-span-6">
-                                <label for="post-form-7" class="form-label">Site Web</label>
-                                <input id="post-form-7" type="text" class="form-control" name="web" value="{{ $company->web }}" placeholder="www.yourwebsite.com">
-                            </div>
-                            <div class="w-52 mx-auto xl:mr-0 col-span-12 sm:col-span-6 mt-4">
-                                <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
-                                    <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                    @if(isset($company->logo))
-                                        <img class="rounded-md" alt="..." src="/storage/{{ $company->logo }}">
-                                    @else
-                                    <img class="rounded-md" alt="..." src="{{ asset('dist/images/profile-10.jpg')}}">
-                                    @endif
-
-                                        <img class="rounded-md" alt="Midone - HTML Admin Template" src="{{ asset('dist/images/profile-10.jpg')}}">
-                                        <div title="Remove this profile photo?"
-                                         class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2">
-                                         <i data-lucide="x" class="w-4 h-4"></i> </div>
-                                    </div>
-                                    <div class="mx-auto cursor-pointer relative mt-5">
-                                        <button type="button" class="btn btn-success w-full">Changer Logo</button>
-                                        <input type="file" class="w-full h-full top-0 left-0 absolute opacity-0">
+                    <form method="POST" action="{{ route('company.logo.update' , $company->id) }}"
+                        enctype="multipart/form-data" >
+                        @csrf
+                        @method('PUT')
+                        <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5  mt-5">
+                            <div class="font-medium flex items-center border-b border-slate-200/60 dark:border-darkmode-400 pb-5">
+                                <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i>Site web & Images </div>
+                            <div class="grid grid-cols-12 mt-4">
+                                <div class="intro-y col-span-12 sm:col-span-6">
+                                    <label for="post-form-7" class="form-label">Site Web</label>
+                                    <input id="post-form-7" type="text" class="form-control" name="web" value="{{ $company->web }}" placeholder="www.yourwebsite.com">
+                                    @error('web') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                                </div>
+                                <div class="w-52 mx-auto xl:mr-0 col-span-12 sm:col-span-6 mt-4">
+                                    <div class="border-2 border-dashed shadow-sm border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
+                                        <div class="h-40 relative image-fit cursor-pointer zoom-in mx-auto">
+                                            <img class="rounded-md"
+                                            src="/images/logo/{{ $company->logo }}"
+                                            >
+                                            <div title="Remove this profile photo?" class="tooltip w-5 h-5 flex items-center justify-center absolute rounded-full text-white bg-danger right-0 top-0 -mr-2 -mt-2"> <i data-lucide="x" class="w-4 h-4"></i> </div>
+                                        </div>
+                                        <div class="mx-auto cursor-pointer relative mt-5">
+                                            <button type="button" class="btn btn-outline-success w-full">Change Photo</button>
+                                            <input type="file" name="logo" class="w-full h-full top-0 left-0 absolute opacity-0">
+                                            @error('logo') <span class="error  btn-danger">{{ $message }}</span> @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="intro-y col-span-12 sm:col-span-12" style="text-align: right;">
-                                <button class="btn w-32 btn-primary dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10"
-                                type="button">Modifier </button>
+                                <button class="btn w-32 btn-primary dark:bg-darkmode-800 dark:text-white mt-6 sm:mt-10" type="submit"
+                                >Modifier </button>
+                            </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
                 <!-- end 4 content-->
             </div>
