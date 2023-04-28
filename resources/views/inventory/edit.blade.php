@@ -1,8 +1,22 @@
 @extends('layouts.menu')
 @section('content')
+<style>
+    .loading-inventory{
+        background-color: #f59e0b;
 
-<!-- BEGIN: Product Information -->
+        border-radius: 9px;
+    }
+</style>
+
+<!-- BEGIN: Product Information
+ <button class="btn btn-warning mr-1 mb-2"> Loading <i data-loading-icon="three-dots" data-color="1a202c" class="w-4 h-4 ml-2"></i> </button>
+-->
  <div class="intro-y box p-5 mt-5">
+    <div class="loading-inventory">
+        <div style="margin-bottom: 12px; padding: 11px 5px">
+            Statut d'inventaire  :  En cours <i data-loading-icon="spinning-circles" data-color="white" class="w-4 h-4 ml-2"></i>
+        </div>
+    </div>
     <div class="border border-slate-200/60 dark:border-darkmode-400 rounded-md p-5">
         <div class="flex items-center border-b
          dark:border-darkmode-400 pb-5
@@ -10,11 +24,11 @@
         <h2 class="text-lg font-medium mr-auto">
             <i data-lucide="chevron-down" class="w-4 h-4 mr-2"></i> Information Inventaire
         </h2>
-             <div class="w-full sm:w-auto flex mt-4 sm:mt-0">
-                <button class="btn btn-primary mr-1 mb-2">Liste</button>
-                 <button class="btn btn-secondary w-24 mr-1 mb-2">Imprimer</button>
-                 <button class="btn btn-success w-24 mr-1 mb-2">Valider & Cloturer</button>
-                 <button class="btn btn-rounded-warning w-24 mr-1 mb-2">Modifier inventaire</button>
+             <div class="">
+                  <a href="{{ route('inventory.list') }}" class="btn btn-primary w-32 mr-2 mb-2"> <i data-lucide="activity" class="w-4 h-4 mr-2"></i> Liste </a>
+                  <button class="btn btn-secondary w-32 mr-2 mb-2"> <i data-lucide="hard-drive" class="w-4 h-4 mr-2"></i> Imprimer </button>
+                  <button class="btn btn-success w-32 mr-2 mb-2"> <i data-lucide="calendar" class="w-4 h-4 mr-2"></i> Valider </button>
+                  <button class="btn btn-warning w-32 mr-2 mb-2"> <i data-lucide="share-2" class="w-4 h-4 mr-2"></i>Modifier IN </button>
             </div>
         </div>
             <div class="row">
@@ -83,8 +97,8 @@
                         <th class="text-center whitespace-nowrap">ECART</th>
                         <th class="text-center whitespace-nowrap">ECART VALORISÉ</th>
                         <th class="text-center whitespace-nowrap">VALEUR DU STOCK RÉEL</th>
-                        <th class="text-center whitespace-nowrap"> <button class="btn btn-success w-24 mr-1 mb-2">
-                            <i data-lucide="check-square" class="w-4 h-4 mr-2"></i> Enregister</button>
+                        <th class="text-center "> <a href="" class="btn btn-elevated-rounded-primary w-24 mr-1 mb-2">
+                         Enregister</a>
                         </th>
                     </tr>
                 </thead>
@@ -99,9 +113,9 @@
                         <td class="text-center"> {{ $productInventory->achat  }} </td>
                         <td class="text-center">
                             <a href="" class="font-medium whitespace-nowrap"> {{ $productInventory->quantite_en_ligne  }} </a>                        </td>
-
+                        </td>
                         <td class="text-center">
-                            <input type="number" class="" value="{{ $productInventory->quantite_en_stock  }}">
+                            <input type="number" class="" value="{{ $productInventory->quantite_en_stock  }}" name="quantite_en_stock">
                         </td>
                         <td class="text-center">
                             @if (($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock)  > 0)

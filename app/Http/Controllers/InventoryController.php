@@ -9,6 +9,7 @@ use App\Models\InventoryProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\Console\Input\Input;
 
 class InventoryController extends Controller
 {
@@ -65,19 +66,31 @@ class InventoryController extends Controller
         return redirect()->back();
     }
 
-    public function getInventory(Request $request ,$id){
+    public function getInventory(Request $request,$id){
 
-        $productInventories = InventoryProduct::where('inventory_id', $id )
-        ->get();
-        $productInventories->update([
-            'name'        => $request->name,
-        ]);
+        dd($id);
+
+        $productInventories = $request->get('quantite_en_stock');
+
+        foreach ($productInventories as $productInventory) {
+
+            $productInventory = InventoryProduct::where('product_id', $id)
+            ->update([
+                'quantite_en_stock'        => $request->quantite_en_stock,
+            ]);
+        }
         return redirect()->back();
     }
 }
 
 
 //try {
+
+
+
+
+
+
  //   $user= User::FindOrFail($id);
   //  return response()->json(['user'=>user], 200);
 //} catch (\Exception $e) {

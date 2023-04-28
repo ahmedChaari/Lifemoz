@@ -129,8 +129,7 @@ Route::get('/inventories',                  [InventoryController::class, 'listIn
 Route::post('/create/inventaire',           [InventoryController::class, 'createInvenory']) ->name('inventory.create')->middleware('auth');
 Route::get('/inventory/{id}',               [InventoryController::class, 'editInvenory']) ->name('inventory.edit')->middleware('auth');
 Route::get('/delete/product/inventory/{id}',[InventoryController::class, 'deleteProductInventory']) ->name('inventory.product.delete')->middleware('auth');
-
-
+Route::post('/get/inventory/{id}',          [InventoryController::class, 'getInventory']) ->name('inventory.get')->middleware('auth');
 
 Route::get('/company', function () {
     return view('layouts.company');
