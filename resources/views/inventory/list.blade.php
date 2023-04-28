@@ -83,8 +83,7 @@
                             <div class="flex justify-center items-center">
                                 <a class="flex items-center text-success mr-3" href="">
                                     <i data-lucide="eye" class="w-4 h-4 mr-1"></i> </a>
-                                <a href="javascript:;" data-tw-toggle="modal"
-                                        data-tw-target="#overlapping-modal-preview_{{ $inventory->id }}"
+                                <a href="{{ route('inventory.edit', $inventory->id )}}"
                                         class="flex items-center mr-3">
                                         <i data-lucide="edit" class="w-4 h-4 mr-1"></i>
                                 </a>

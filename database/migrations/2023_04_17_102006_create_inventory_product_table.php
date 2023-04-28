@@ -19,6 +19,7 @@ class CreateInventoryProductTable extends Migration
             $table->foreignUuid('inventory_id');
             $table->integer('quantite_en_ligne');
             $table->integer('quantite_en_stock');
+            $table->integer('achat')->nullable();
             $table->timestamps();
         });
     }

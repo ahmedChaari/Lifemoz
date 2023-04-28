@@ -47,4 +47,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Inventory::class);
     }
+
+    public function inventoryProduct(): ?HasMany
+    {
+        return $this->hasMany(InventoryProduct::class);
+    }
 }

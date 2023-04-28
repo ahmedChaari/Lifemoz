@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             ProductSeeder::class,
             SaleSeeder::class,
             InventorySeeder::class,
+            InventoryProductSeeder::class,
         ]);
     }
 }

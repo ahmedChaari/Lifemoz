@@ -125,9 +125,10 @@ Route::get('/sales',          [SaleController::class, 'listSale'])  ->name('sale
 Route::post('/create/sale',         [SaleController::class, 'createSale']) ->name('sale.create')->middleware('auth');
 
 //inventory
-Route::get('/inventories',          [InventoryController::class, 'listInventory'])  ->name('inventory.list')->middleware('auth');
-Route::post('/create/inventaire',   [InventoryController::class, 'createInvenory']) ->name('inventory.create')->middleware('auth');
-
+Route::get('/inventories',                  [InventoryController::class, 'listInventory'])  ->name('inventory.list')->middleware('auth');
+Route::post('/create/inventaire',           [InventoryController::class, 'createInvenory']) ->name('inventory.create')->middleware('auth');
+Route::get('/inventory/{id}',               [InventoryController::class, 'editInvenory']) ->name('inventory.edit')->middleware('auth');
+Route::get('/delete/product/inventory/{id}',[InventoryController::class, 'deleteProductInventory']) ->name('inventory.product.delete')->middleware('auth');
 
 
 
