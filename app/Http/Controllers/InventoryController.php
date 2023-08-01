@@ -71,13 +71,10 @@ class InventoryController extends Controller
         $inventory = InventoryProduct::find($id);
        // dd($inventory);
        $productInventories =[];
-        $productInventories = InventoryProduct::where('inventory_id', $inventory->inventory_id)->get('id')
-        ;
-      dd($productInventories);
+        $productInventories = InventoryProduct::where('inventory_id', $inventory->inventory_id)->get('id');
+
             foreach($productInventories as $productInventory){
                 dd($productInventory);
-var_dump($productInventory);
-exit();
                 InventoryProduct::where('id', $productInventory->id)
                                 ->update([ 'quantite_en_stock'
                                  => $request->quantite_en_stock,]);
