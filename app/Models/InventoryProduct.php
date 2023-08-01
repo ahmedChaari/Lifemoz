@@ -11,6 +11,8 @@ class InventoryProduct extends Model
 {
     use Uuids, HasFactory;
 
+    protected $guarded = [];
+
     protected $table  = 'inventory_product';
 
     public function product(): ?BelongsTo

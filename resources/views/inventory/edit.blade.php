@@ -97,64 +97,66 @@
                         <th class="text-center whitespace-nowrap">ECART</th>
                         <th class="text-center whitespace-nowrap">ECART VALORISÉ</th>
                         <th class="text-center whitespace-nowrap">VALEUR DU STOCK RÉEL</th>
-                        <th class="text-center "> <a href="" class="btn btn-elevated-rounded-primary w-24 mr-1 mb-2">
-                         Enregister</a>
-                        </th>
+                        <th class="text-center "> ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if($productInventories->count() > 0 )
                     @foreach($productInventories  as $productInventory)
-                    <tr class="intro-x">
-                        <td class="w-40">
-                            <a href="" class="font-medium whitespace-nowrap">{{ $productInventory->inventory->reference  }}</a>
-                        </td>
-                        <td class="text-center"> {{ $productInventory->product->name  }} </td>
-                        <td class="text-center"> {{ $productInventory->achat  }} </td>
-                        <td class="text-center">
-                            <a href="" class="font-medium whitespace-nowrap"> {{ $productInventory->quantite_en_ligne  }} </a>                        </td>
-                        </td>
-                        <td class="text-center">
-                            <input type="number" class="" value="{{ $productInventory->quantite_en_stock  }}" name="quantite_en_stock">
-                        </td>
-                        <td class="text-center">
-                            @if (($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock)  > 0)
-                            <div class="flex items-center justify-center text-success">  {{ $productInventory->quantite_en_ligne - $productInventory->quantite_en_stock  }} </div>
-                            @else
-                            <div class="flex items-center justify-center text-danger">  {{ $productInventory->quantite_en_ligne - $productInventory->quantite_en_stock  }} </div>
-                            @endif
-                        </td>
-                        <td class="text-center">
-                            @if ($productInventory->achat * ($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock) > 0)
-                            <div class="flex items-center justify-center text-success">
-                                {{$productInventory->achat * ($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock)}}
-                            </div>
-                            @else
-                            <div class="flex items-center justify-center text-danger">
-                                {{$productInventory->achat * ($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock)}}
-                            </div>
-                            @endif
-                        </td>
-                        <td class="table-report__action w-56">
-                            <div class="flex justify-center items-center">
+                    <form method="post" action="{{ route('inventory.get', $productInventory->id ) }}" >
+                        @csrf
+
+                        <tr class="intro-x">
+                            <td class="w-40">
+                                <input type="hidden" name="id" value="{{ $productInventory->id  }}">
+                                <a href="" class="font-medium whitespace-nowrap">{{ $productInventory->inventory->reference  }}</a>
+                            </td>
+                            <td class="text-center"> {{ $productInventory->product->name  }} </td>
+                            <td class="text-center"> {{ $productInventory->achat  }} </td>
+                            <td class="text-center">
+                                <a href="" class="font-medium whitespace-nowrap"> {{ $productInventory->quantite_en_ligne  }} </a>                        </td>
+                            </td>
+                            <td class="text-center">
+                                <input type="number" class=""  name="quantite_en_stock[2]" value="{{ $productInventory->quantite_en_stock  }}">
+                            </td>
+                            <td class="text-center">
                                 @if (($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock)  > 0)
+                                <div class="flex items-center justify-center text-success">  {{ $productInventory->quantite_en_ligne - $productInventory->quantite_en_stock  }} </div>
+                                @else
+                                <div class="flex items-center justify-center text-danger">  {{ $productInventory->quantite_en_ligne - $productInventory->quantite_en_stock  }} </div>
+                                @endif
+                            </td>
+                            <td class="text-center">
+                                @if ($productInventory->achat * ($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock) > 0)
                                 <div class="flex items-center justify-center text-success">
-                                    {{ $productInventory->achat * $productInventory->quantite_en_stock }}
+                                    {{$productInventory->achat * ($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock)}}
                                 </div>
                                 @else
                                 <div class="flex items-center justify-center text-danger">
-                                    {{ $productInventory->achat * $productInventory->quantite_en_stock }}
+                                    {{$productInventory->achat * ($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock)}}
                                 </div>
                                 @endif
-                            </div>
-                        </td>
-                        <td class="table-report__action w-56">
-                            <div class="flex justify-center items-center">
-                               <a class="flex items-center text-danger delete-confirm" href="{{ route('inventory.product.delete',$productInventory->id ) }}">
-                                <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> </a>
-                            </div>
-                        </td>
-                    </tr>
+                            </td>
+                            <td class="table-report__action w-56">
+                                <div class="flex justify-center items-center">
+                                    @if (($productInventory->quantite_en_ligne - $productInventory->quantite_en_stock)  > 0)
+                                    <div class="flex items-center justify-center text-success">
+                                        {{ $productInventory->achat * $productInventory->quantite_en_stock }}
+                                    </div>
+                                    @else
+                                    <div class="flex items-center justify-center text-danger">
+                                        {{ $productInventory->achat * $productInventory->quantite_en_stock }}
+                                    </div>
+                                    @endif
+                                </div>
+                            </td>
+                            <td class="table-report__action w-56">
+                                <div class="flex justify-center items-center">
+                                   <a class="flex items-center text-danger delete-confirm" href="{{ route('inventory.product.delete',$productInventory->id ) }}">
+                                    <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> </a>
+                                </div>
+                            </td>
+                        </tr>
                     @endforeach
                     <tr class="intro-x">
                         <td  class="text-center"></td>
@@ -169,8 +171,13 @@
                         @endforeach
                         </td>
                         <td></td>
-                        <td></td>
+                        <td class="text-center "><button type="submit" class="btn btn-elevated-rounded-primary w-24 mr-1 mb-2"> Enregister
+
+                        </button>
+
+                        </td>
                     </tr>
+                </form>
                     @else
                     <h3 class="text-center mt-5 mb-5">Pas encore des inventories</h3>
                     @endif
