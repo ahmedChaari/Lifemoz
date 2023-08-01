@@ -68,20 +68,28 @@ class InventoryController extends Controller
 
     public function getInventory(Request $request,$id){
 
-        dd($id);
+        $inventory = InventoryProduct::find($id);
+       // dd($inventory);
+       $productInventories =[];
+        $productInventories = InventoryProduct::where('inventory_id', $inventory->inventory_id)->get('id')
+        ;
+      dd($productInventories);
+            foreach($productInventories as $productInventory){
+                dd($productInventory);
+var_dump($productInventory);
+exit();
+                InventoryProduct::where('id', $productInventory->id)
+                                ->update([ 'quantite_en_stock'
+                                 => $request->quantite_en_stock,]);
+            }
 
-        $productInventories = $request->get('quantite_en_stock');
-
-        foreach ($productInventories as $productInventory) {
-
-            $productInventory = InventoryProduct::where('product_id', $id)
-            ->update([
-                'quantite_en_stock'        => $request->quantite_en_stock,
-            ]);
-        }
         return redirect()->back();
     }
+
+
 }
+
+
 
 
 //try {
